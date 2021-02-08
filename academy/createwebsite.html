@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Meine eigene Website</title>
+
+		<link rel="stylesheet" href="/reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="/reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="/reveal.js/dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="/reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section>
+                    <h1>Meine eigene Website</h1>
+                    <h4>Sebastian Neumaier</h4>
+                  </section>
+                  <section data-background-iframe="https://medium.com/@ritikjain1272/a-beginners-guide-to-host-your-site-on-github-pages-5d09ca933094"></section>
+			</div>
+		</div>
+
+		<script src="/reveal.js/dist/reveal.js"></script>
+		<script src="/reveal.js/plugin/notes/notes.js"></script>
+		<script src="/reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="/reveal.js/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+                dependencies: [
+                    // other dependencies
+                    { src: '/plugin/quiz/js/quiz.js', async: true, callback: function() { prepareQuizzes({}); } }
+                ],
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

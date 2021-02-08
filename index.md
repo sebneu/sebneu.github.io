@@ -4,6 +4,8 @@ This is my personal Gitlab page used for slides and demos.
 
 Find my webpage [here](https://sebneumaier.wordpress.com/).
 
-#### Science Academy
+#### Science Academy '21
 
-1. [History of the Internet](academy/internet.html)
+1. [Das Internet](academy/internet.html)
+  * [Die eigene Website online](academy/createwebsite.html)
+2. [Open Data](academy.opendata.html)
