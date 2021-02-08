@@ -8,4 +8,4 @@ Find my webpage [here](https://sebneumaier.wordpress.com/).
 
 1. [Das Internet](academy/internet.html)
   * [Die eigene Website online](academy/createwebsite.html)
-2. [Open Data](academy.opendata.html)
+2. [Open Data](academy/opendata.html)
