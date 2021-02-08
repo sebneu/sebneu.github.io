@@ -27,7 +27,34 @@
                     </p>
                   </section>
                   <section>
-                      <h2>Geschichte des Internets</h2>
+                      <h2>Aufwärmen:</h2>
+                    <script data-quiz>
+                        quiz = {
+                                "info": {
+                                        "name":    "Test Your Knowledge!!",
+                                        "main":    "Think you're smart enough to be on Jeopardy? Find out with this super crazy knowledge quiz!",
+                                        "level1":  "Jeopardy Ready",
+                                        "level2":  "Jeopardy Contender",
+                                        "level3":  "Jeopardy Amateur",
+                                        "level4":  "Jeopardy Newb",
+                                        "level5":  "Stay in school, kid..." // no comma here
+                                },
+                                "questions": [
+                                        { // Question 1 - Multiple Choice, Single True Answer
+                                                "q": "Wie alt ist das Internet?",
+                                                "a": [
+                                                        {"option": "22",      "correct": false},
+                                                        {"option": "82",     "correct": false},
+                                                        {"option": "52",      "correct": true},
+                                                        {"option": "12",     "correct": false} // no comma here
+                                                ],
+                                                "correct": "<p><span>Korrekt!</span> Das Internet begann am 29. Oktober 1969 als Arpanet.</p>",
+                                                "incorrect": "<p><span>Leider falsch...</span> Es wurde während des kalten Krieges entwickelt.</p>" // no comma here
+                                        },
+                                        // more questions here
+                                ]
+                        }
+                    </script>
                       <p>
                           Wie alt ist das Internet?
                       </p>
@@ -179,6 +206,22 @@ Yet a revolution had begun...
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/RT-11_help.jpg/1024px-RT-11_help.jpg">
                 </p>
               </section>
+              <section>
+                <h3>World Wide Web</h3>
+                <p>
+                    1989 entwickelte Tim Berners-Lee in CERN eine Methode um Textseiten mit "Links" zu verbinden:
+                </p>
+                <p>
+                    <ul>
+                        <li>HTTP (HyperText Transfer Protocol)</li>
+                        <li>URLs (Universal Resource Locators)</li>
+                        <li>HTML (HyperText Markup Language)</li>
+                    </ul>
+                </p>
+                  <p>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/RT-11_help.jpg/1024px-RT-11_help.jpg">
+                </p>
+              </section>
 			</div>
 		</div>
 
@@ -191,6 +234,10 @@ Yet a revolution had begun...
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
 			Reveal.initialize({
+                dependencies: [
+                    // other dependencies
+                    { src: 'plugin/quiz/js/quiz.js', async: true, callback: function() { prepareQuizzes({}); } }
+                ],
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
