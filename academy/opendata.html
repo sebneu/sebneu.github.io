@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Open Data</title>
+
+		<link rel="stylesheet" href="/reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="/reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="/reveal.js/dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="/reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section>
+                    <h1>Open Data</h1>
+                    <h4>Sebastian Neumaier</h4>
+                    <p>
+                    
+                    </p>
+                  </section>
+                  <section>
+                    <h3>Was ist Open Data?</h3>
+                      <p>“Open means anyone can freely access, use, modify, and share for any purpose (subject, at most, to requirements that preserve provenance and openness).”</p>
+                      <p>Source: <a href="https://opendefinition.org/">The Open Definition</a></p>
+                  </section>
+                  <section data-background-iframe="https://de.wikipedia.org/wiki/Wikipedia:Hauptseite">
+                  </section>
+                  <section data-background-iframe="https://www.data.gv.at/">
+                  </section>
+                  <section data-background-iframe="https://www.europeandataportal.eu/de">
+                  </section>
+                  <section>
+                    <h3>Dateiformate</h3>
+                    <img src="formats.png">
+                  </section>
+                  <section>
+                      <p>Welche tabularen Formate gibt es?</p>
+                      <p>Was sind "tree-shaped" Formate?</p>
+                      <p>Was sind Graphdaten?</p>
+                  </section>
+                  <section>
+                    <h3>Wie sehen die Daten aus?</h3>
+                    <iframe src="https://www.data.gv.at/katalog/dataset/stadt-wien_anzahlderhundeprobezirkderstadtwien"></iframe>
+                    <p>Datensatz auf <a href="https://www.data.gv.at/katalog/dataset/stadt-wien_anzahlderhundeprobezirkderstadtwien">data.gv.at</a></p>
+                  </section>
+                  <section>
+                    <h3>Mit Open Data arbeiten</h3>
+                    <iframe src="https://www.kaggle.com/sebneu/dogs-in-vienna-open-data-processing-tutorial"></iframe>
+                    <p>Beispiel auf <a href="https://www.kaggle.com/sebneu/dogs-in-vienna-open-data-processing-tutorial">Kaggle</a></p>
+                  </section>
+			</div>
+		</div>
+
+		<script src="/reveal.js/dist/reveal.js"></script>
+		<script src="/reveal.js/plugin/notes/notes.js"></script>
+		<script src="/reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="/reveal.js/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+                dependencies: [
+                    // other dependencies
+                    { src: '/plugin/quiz/js/quiz.js', async: true, callback: function() { prepareQuizzes({}); } }
+                ],
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
