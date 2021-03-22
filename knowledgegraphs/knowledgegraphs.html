@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Knowledge Graphs</title>
+
+		<link rel="stylesheet" href="/reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="/reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="/reveal.js/dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="/reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+		
+		<!-- yasgui -->
+		<link href="https://unpkg.com/@triply/yasgui/build/yasgui.min.css" rel="stylesheet" type="text/css" />
+		<script src="https://unpkg.com/@triply/yasgui/build/yasgui.min.js"></script>
+
+		<style>
+		  .yasgui .autocompleteWrapper {
+		    display: none !important;
+		  }
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section>
+                    <h1>Knowledge Graphs</h1>
+                    <p>Based on: Aidan Hogan, et al. "Knowledge Graphs". In ACM Computing Surveys, 2021.</p>
+                  </section>
+                  <section>
+                    <h4>Definition</h4>
+                    <p>"a graph of data intended to accumulate and convey knowledge of the real world, whose nodes represent entities of interest and whose edges represent relations between these entities"</p>
+                  </section>
+                  <section>
+                    <section>
+		            <h4>Open Knowledge Graphs</h4>
+		            <ul>
+		                <li>published under the Open Data philosophy</li>
+		                <li>often under the Linked Data principles</li>
+		                <li>multiple domains, broad range of entities and relationships</li>
+		            </ul>
+                    </section>
+                    <section>
+		            <ul>
+		                <li>DBpedia</li>
+		                <li>YAGO</li>
+		                <li>Freebase</li>
+		                <li>Wikidata</li>
+		            </ul>
+                    </section>
+                  </section>
+                  <section>
+                    <section>
+		            <h4>Enterprise Knowledge Graphs</h4>
+		            <ul>
+		                <li>Web search engines</li>
+		                <li>Commerce</li>
+		                <li>Social Networks</li>
+		                <li>Finance</li>
+		            </ul>
+                    </section>
+                    <section>
+		            <ul>
+		                <li>Google Knowledge Graph</li>
+		                <li>Amazon</li>
+		                <li>Uber</li>
+		                <li>LinkedIn</li>
+		            </ul>
+                    </section>
+                  </section>
+                  <section>
+                    <h3>Graph Data Models</h3>
+                  </section>
+                  <section>
+                    <section>
+                      <h4>Directed edge-labelled graphs</h4>
+  		      <img data-src="dlg.png">
+                    </section>
+                    <section>
+                      <h4>Resource Description Framework (RDF)</h4>
+		            <ul>
+		                <li>"subject–predicate–object" triples</li>
+		                <li>E.g., Bob knows John:</li>
+		            </ul>
+			  <pre><code data-trim data-noescape>
+http://example.name#BobSmith12 http://xmlns.com/foaf/0.1/knows http://example.name#JohnDoe34.
+			  </code></pre>
+                    </section>
+                  </section>
+                  <section>
+                    <section>
+                      <h4>Property graphs</h4>
+		            <ul>
+		                <li>property–value pairs associated with both nodes and edges</li>
+		                <li>used in popular graph databases (e.g. Neo4j)</li>
+		                <li>can be translated to/from directed edge-labelled graphs</li>
+		            </ul>
+  		      <img data-src="prop.png">
+                    </section>
+                    <section>
+                      <h4>Translation from/to DEG</h4>
+  		      <img data-src="deg2.png">
+                    </section>
+                  </section>
+                  <section>
+                    <section>
+                      <h4>Querying</h4>
+	              <ul>
+	                <li>Graph patterns</li>
+	                <li>Complex patterns, e.g., union, difference, etc.</li>
+	                <li>Navigational graph patterns, e.g. path expressions</li>
+	              </ul>
+                    </section>
+                    <section>
+                      <h4>Query Languages</h4>
+	              <ul>
+	                <li>RDF graphs:
+			    <ul>
+			        <li>SPARQL</li>
+			    </ul>
+	                </li>
+	                <li>Property graphs:
+			    <ul>
+			        <li>Cypher</li>
+			        <li>Gremlin</li>
+			        <li>G-CORE</li>
+			    </ul>
+	                </li>
+	            </ul>
+                    </section>
+                    <section>
+	              <div id="yasgui"></div>
+                    </section>
+                  </section>
+                  <section>
+                    <h3>Schema, Identity, Context</h3>
+                  </section>
+                  <section>
+                    <h4>Schema</h4>
+	              <ul>
+	                <li>Vocabulary for reasoning</li>
+	                <li>Classes, class hierarchies</li>
+	                <li>Sub-properties, range and domain</li>
+	              </ul>
+  		      <img data-src="schema.png">
+                  </section>
+                  <section>
+                    <h4>Identity</h4>
+	              <ul>
+	                <li>URLs:
+			    <ul>
+			        <li>https://www.wikidata.org/wiki/Q2887</li>
+			    </ul>
+	                </li>
+	                vs
+	                <li>IRIs:
+			    <ul>
+			        <li>http://www.wikidata.org/entity/Q2887</li>
+			    </ul>
+	                </li>
+	            </ul>
+                  </section>
+                  <section>
+                    <h4>Context</h4>
+                  </section>
+                  <section>
+                    <h3>Deductive Knowledge</h3>
+                  </section>
+                  <section>
+                    <h4>Ontologies</h4>
+                  </section>
+                  <section>
+                    <h4>Semantics and Entailment</h4>
+                  </section>
+                  <section>
+                    <h4>Reasoning</h4>
+                  </section>
+                  <section>
+                    <h3>Inductive Knowledge</h3>
+                  </section>
+                  <section>
+                    <h4>Graph Analytics</h4>
+                  </section>
+                  <section>
+                    <h4>Knowledge Graph Embeddings</h4>
+                  </section>
+                  <section>
+                    <h4>Graph Neural Networks</h4>
+                  </section>
+                  <section>
+                    <h4>Symbolic Learning</h4>
+                  </section>
+                  <section>
+                    <h3>Creation and Enrichment</h3>
+                  </section>
+                  <section>
+                    <h4>Human Collaboration</h4>
+                  </section>
+                  <section>
+                    <h4>Text Sources</h4>
+                  </section>
+                  <section>
+                    <h4>Markup Sources</h4>
+                  </section>
+                  <section>
+                    <h4>Structured Sources</h4>
+                  </section>
+                  <section>
+                    <h4>Schema/Ontology Creation</h4>
+                  </section>
+                  <section>
+                    <h3>Quality Assessment</h3>
+                  </section>
+                  <section>
+                    <h3>Refinement</h3>
+                  </section>
+                  <section>
+                    <h3>Publication</h3>
+                  </section>
+		</div>
+		</div>
+
+		<script src="/reveal.js/dist/reveal.js"></script>
+		<script src="/reveal.js/plugin/notes/notes.js"></script>
+		<script src="/reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="/reveal.js/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+                dependencies: [
+                    // other dependencies
+                ],
+				hash: true,
+				slideNumber: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		<script>
+			const yasgui = new Yasgui(document.getElementById("yasgui"), {
+			  requestConfig: { endpoint: "https://query.wikidata.org/sparql" },
+			  copyEndpointOnNewTab: false,
+			});
+		</script>
+	</body>
+</html>
