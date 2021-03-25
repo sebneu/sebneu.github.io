@@ -35,6 +35,18 @@
                     <p>"a graph of data intended to accumulate and convey knowledge of the real world, whose nodes represent entities of interest and whose edges represent relations between these entities"</p>
                   </section>
                   <section>
+                    <h4>Contents</h4>
+                    <ul>
+                      <li><a href="#/models">Graph Data Models</a></li>
+                      <li><a href="#/schema">Schema, Identity, Context</a></li>
+                      <li><a href="#/deductive">Deductive Knowledge</a></li>
+                      <li><a href="#/inductive">Inductive Knowledge</a></li>
+                      <li><a href="#/creation">Creation and Enrichment</a></li>
+                      <li><a href="#/quality">Quality Assessment</a></li>
+                      <li><a href="#/practice">KGs in Practice</a></li>
+                    </ul>
+                  </section>
+                  <section>
                     <section>
 		            <h4>Open Knowledge Graphs</h4>
 		            <ul>
@@ -71,7 +83,7 @@
 		            </ul>
                     </section>
                   </section>
-                  <section>
+                  <section id="models">
                     <h3>Graph Data Models</h3>
                   </section>
                   <section>
@@ -135,7 +147,7 @@ http://example.name#BobSmith12 http://xmlns.com/foaf/0.1/knows http://example.na
 	              <div id="yasgui"></div>
                     </section>
                   </section>
-                  <section>
+                  <section id="schema">
                     <h3>Schema, Identity, Context</h3>
                   </section>
                   <section>
@@ -148,7 +160,9 @@ http://example.name#BobSmith12 http://xmlns.com/foaf/0.1/knows http://example.na
   		      <img data-src="schema.png">
                   </section>
                   <section>
+                    <section>
                     <h4>Identity</h4>
+                    Persistent Identifiers
 	              <ul>
 	                <li>URLs:
 			    <ul>
@@ -162,11 +176,19 @@ http://example.name#BobSmith12 http://xmlns.com/foaf/0.1/knows http://example.na
 			    </ul>
 	                </li>
 	            </ul>
+                    </section>
+                    <section>
+                      <h4>Identity</h4>
+                      Existential Nodes
+  		      <img data-src="blanknode.png">
+                    </section>
                   </section>
                   <section>
                     <h4>Context</h4>
+                    Context on an edge in del graphs: 
+                    <img data-src="edge_context.png">
                   </section>
-                  <section>
+                  <section id="deductive">
                     <h3>Deductive Knowledge</h3>
                   </section>
                   <section>
@@ -178,14 +200,35 @@ http://example.name#BobSmith12 http://xmlns.com/foaf/0.1/knows http://example.na
                   <section>
                     <h4>Reasoning</h4>
                   </section>
-                  <section>
+                  <section id="inductive">
                     <h3>Inductive Knowledge</h3>
+  		      <img data-src="inductive.png">
                   </section>
                   <section>
+                    <section>
                     <h4>Graph Analytics</h4>
+                    discovering and interpreting inherent patterns
+		    <ul>
+		        <li>Centrality, e.g., degree, closeness, PageRank</li>
+		        <li>Community detection, e.g., minimum-cut</li>
+		        <li>Connectivity, e.g., density, k-connectivity, spanning trees</li>
+		        <li>Node similarity</li>
+		        <li>Path finding</li>
+		    </ul>
+                    </section>
+                    <section>
+                      <h3>Frameworks</h3>
+		    <ul>
+		        <li>Apache Spark</li>
+		        <li>GraphLab</li>
+		        <li>Pregel</li>
+		        <li>Signal-Collect</li>
+		    </ul>
+                    </section>
                   </section>
                   <section>
                     <h4>Knowledge Graph Embeddings</h4>
+  		      <img data-src="embedding.png">
                   </section>
                   <section>
                     <h4>Graph Neural Networks</h4>
@@ -193,32 +236,51 @@ http://example.name#BobSmith12 http://xmlns.com/foaf/0.1/knows http://example.na
                   <section>
                     <h4>Symbolic Learning</h4>
                   </section>
-                  <section>
+                  <section id="creation">
                     <h3>Creation and Enrichment</h3>
                   </section>
                   <section>
                     <h4>Human Collaboration</h4>
+		    <ul>
+		        <li>through collaborative-editing platforms</li>
+		        <li>prominent examples, e.g., Wikidata</li>
+		        <li>prone to disagreement, bias, vandalism, etc.</li>
+		    </ul>
                   </section>
                   <section>
                     <h4>Text Sources</h4>
+		    <ul>
+		        <li>Tokenisation, POS tagging, Word Sense Disambiguation</li>
+		        <li>Named Entity Recognition</li>
+		        <li>Entity Linking</li>
+		        <li>Relation Extraction</li>
+		    </ul>
                   </section>
                   <section>
                     <h4>Markup Sources</h4>
+                      HTML, Web tables, Wikitext (Wikipedia), TeX, Markdown
+  		      <img data-src="markup.png">
                   </section>
                   <section>
                     <h4>Structured Sources</h4>
+                      Mapping from relational databases
+  		      <img data-src="relational.png">
+  		      <img data-src="relational_mapping.png">
                   </section>
                   <section>
                     <h4>Schema/Ontology Creation</h4>
                   </section>
-                  <section>
+                  <section id="quality">
                     <h3>Quality Assessment</h3>
                   </section>
-                  <section>
-                    <h3>Refinement</h3>
+                  <section id="practice">
+                    <h3>Knowledge Graphs in Practice</h3>
                   </section>
                   <section>
-                    <h3>Publication</h3>
+                    <h4>DBpedia</h4>
+                  </section>
+                  <section>
+                    <h4>Wikidata</h4>
                   </section>
 		</div>
 		</div>
