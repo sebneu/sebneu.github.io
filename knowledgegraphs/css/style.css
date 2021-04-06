@@ -1,0 +1,673 @@
+@font-face {
+	font-family: Charis;
+	font-weight: normal;
+	font-style: normal;
+	src: url("../fonts/CharisSIL/CharisSIL-R.woff");
+}
+@font-face {
+	font-family: Charis;
+	font-style: italic;
+	font-weight: normal;
+	src: url("../fonts/CharisSIL/CharisSIL-I.woff");
+}
+@font-face {
+	font-family: Charis;
+	font-weight: bold;
+	font-style: normal;
+	src: url("../fonts/CharisSIL/CharisSIL-B.woff");
+}
+@font-face {
+	font-family: Charis;
+	font-weight: bold;
+	font-style: italic;
+	src: url("../fonts/CharisSIL/CharisSIL-BI.woff");
+}
+@font-face {
+	font-family: CooperHewitt;
+	font-weight: normal;
+	font-style: normal;
+	src: url("../fonts/CooperHewitt-WebFonts-public/CooperHewitt-Medium.woff");
+}
+@font-face {
+	font-family: CooperHewitt;
+	font-weight: 300;
+	font-style: normal;
+	src: url("../fonts/CooperHewitt-WebFonts-public/CooperHewitt-Light.woff");
+}
+@font-face {
+	font-family: CooperHewitt;
+	font-weight: 100 200;
+	font-style: normal;
+	src: url("../fonts/CooperHewitt-WebFonts-public/CooperHewitt-Thin.woff");
+}
+@font-face {
+	font-family: CooperHewitt;
+	font-weight: normal;
+	font-style: italic;
+	src: url("../fonts/CooperHewitt-WebFonts-public/CooperHewitt-MediumItalic.woff");
+}
+@font-face {
+	font-family: CooperHewitt;
+	font-weight: bold;
+	font-style: normal;
+	src: url("../fonts/CooperHewitt-WebFonts-public/CooperHewitt-Bold.woff");
+}
+@font-face {
+	font-family: CooperHewitt;
+	font-weight: bold;
+	font-style: italic;
+	src: url("../fonts/CooperHewitt-WebFonts-public/CooperHewitt-BoldItalic.woff");
+}
+@font-face {
+	font-family: Hasklig;
+	font-weight: 100 200;
+	font-style: italic;
+	src: url("../fonts/Hasklig/Hasklig-ExtraLightIt.otf");
+}
+@font-face {
+	font-family: Hasklig;
+	font-weight: 300;
+	font-style: italic;
+	src: url("../fonts/Hasklig/Hasklig-LightIt.otf");
+}
+@font-face {
+	font-family: Hasklig;
+	font-weight: 400;
+	font-style: italic;
+	src: url("../fonts/Hasklig/Hasklig-It.otf");
+}
+@font-face {
+	font-family: Hasklig;
+	font-weight: 500;
+	font-style: italic;
+	src: url("../fonts/Hasklig/Hasklig-MediumIt.otf");
+}
+@font-face {
+	font-family: Hasklig;
+	font-weight: 600;
+	font-style: italic;
+	src: url("../fonts/Hasklig/Hasklig-SemiboldIt.otf");
+}
+@font-face {
+	font-family: Hasklig;
+	font-weight: 700;
+	font-style: italic;
+	src: url("../fonts/Hasklig/Hasklig-BoldIt.otf");
+}
+@font-face {
+	font-family: Hasklig;
+	font-weight: 800 900;
+	font-style: italic;
+	src: url("../fonts/Hasklig/Hasklig-BlackIt.otf");
+}
+@font-face {
+	font-family: Hasklig;
+	font-weight: 100 200;
+	font-style: normal;
+	src: url("../fonts/Hasklig/Hasklig-ExtraLight.otf");
+}
+@font-face {
+	font-family: Hasklig;
+	font-weight: 300;
+	font-style: normal;
+	src: url("../fonts/Hasklig/Hasklig-Light.otf");
+}
+@font-face {
+	font-family: Hasklig;
+	font-weight: 400;
+	font-style: normal;
+	src: url("../fonts/Hasklig/Hasklig-Regular.otf");
+}
+@font-face {
+	font-family: Hasklig;
+	font-weight: 500;
+	font-style: normal;
+	src: url("../fonts/Hasklig/Hasklig-Medium.otf");
+}
+@font-face {
+	font-family: Hasklig;
+	font-weight: 600;
+	font-style: normal;
+	src: url("../fonts/Hasklig/Hasklig-Semibold.otf");
+}
+@font-face {
+	font-family: Hasklig;
+	font-weight: 700;
+	font-style: normal;
+	src: url("../fonts/Hasklig/Hasklig-Bold.otf");
+}
+@font-face {
+	font-family: Hasklig;
+	font-weight: 800 900;
+	font-style: normal;
+	src: url("../fonts/Hasklig/Hasklig-Black.otf");
+}
+@font-face {
+	font-family: Quattrocento;
+	font-weight: normal;
+	font-style: normal;
+	src: url("../fonts/Quattrocento-Regular.ttf");
+}
+@font-face {
+	font-family: Quattrocento;
+	font-weight: bold;
+	font-style: normal;
+	src: url("../fonts/Quattrocento-Bold.ttf");
+}
+@font-face {
+	font-family: cmss8;
+	src: url("../fonts/ufonts.com_cmss8.ttf");
+}
+
+body {
+	counter-reset: chapters sections subsections tables figures definitions examples toc-chapters appendices;
+	hyphens: auto;
+}
+.reveal {
+	font-family: "Charis", serif;
+	font-size: 30px;
+}
+.reveal h1 {
+	font-family: "Quattrocento", sans-serif;
+}
+.reveal h2 {
+	font-family: "Quattrocento", sans-serif;
+}
+.reveal h3 {
+    font-size: 1.75em;
+	font-family: "Quattrocento", sans-serif;
+}
+.reveal h4 {
+	font-family: "Quattrocento", sans-serif;
+	font-size: 1.4em;
+}
+#title {
+	font-variant: small-caps;
+	font-family: "Quattrocento", sans-serif;
+	font-size: 200%;
+}
+table {
+	border-collapse: collapse;
+	margin: auto;
+	align-content: center;
+	justify-content: center;
+}
+thead th {
+	border-bottom: 2px solid black;
+}
+tfoot td {
+	border-top: 1px solid black;
+	border-bottom: 2px solid black;	
+}
+table caption {
+	text-align: justify;
+	max-width: 95%;
+	width: max-content;
+	margin: auto;
+	font-style: italic;
+	font-size: 70%;
+}
+table caption:before {
+	counter-increment: tables;
+	content: "Table " counter(tables) ": ";
+}
+section > figure {
+	width: 100%;
+	margin: auto;
+	text-align: center;
+	counter-reset: subfigures;
+}
+img.multi {
+	width: 50%;
+    float: left;
+}
+img.inlined {
+	width: auto;
+}
+figure > img {
+	width: 100%;
+}
+
+figcaption {
+	font-size: 70%;
+	font-style: italic;
+}
+section > figure > figcaption {
+	/*text-align: left;*/
+	max-width: 95%;
+	text-align: justify;
+	width: max-content;
+	margin: auto;
+}
+figure > figcaption:before {
+	counter-increment: figures;
+	content: "Figure " counter(figures) ": ";
+}
+figure > figure > figcaption:before {
+	counter-increment: subfigures;
+	content: "(" counter(subfigures, lower-alpha) ") ";
+}
+
+.chapter {
+	counter-reset: sections subsections;
+}
+.chapter > h2:before {
+	counter-increment: chapters;
+	/*content: counter(chapters) ". ";*/
+}
+.section {
+	counter-reset: subsections;
+}
+.section > h3:before {
+	counter-increment: sections;
+	/*content: counter(chapters) "." counter(sections) ". ";*/
+}
+h4.subsection:before {
+	counter-increment: subsections;
+	/*content: counter(chapters) "." counter(sections) "." counter(subsections) ". ";*/
+}
+
+ul.authorlist, ul.reflist {
+	list-style-type: none;
+	padding-left: 0;
+	font-size: 50%;
+}
+.author {
+	font-variant: small-caps;
+}
+
+.footnote {
+	font-style: initial;
+	position: absolute;
+	float: left;
+	left: 66em;
+	border: 1px solid lightgrey;
+	border-radius: .5em;
+	background-color: lightyellow;
+	padding: 0.5em;
+	line-height: 1.1em;
+	margin-right: 1em;
+}
+.footnote:hover {
+	z-index: 100;
+	border: 1px solid orange;
+}
+/*.footnote#fn20 {
+	margin-top: 1em;
+}*/
+.footnote#fn23 {
+	margin-top: 4em;
+}
+.footnote#fn33 {
+	margin-top: 7em;
+}
+
+table#tab-related th, table#tab-related td {
+	font-size: 40%;
+	text-align: left;
+	vertical-align: bottom;
+}
+.rot {
+	transform: rotate(-80deg);
+	width: 0;
+	height: 8em;
+	top: 4em;
+	left: 3.5em;
+	position: relative;
+	vertical-align: bottom;
+	hyphens: none;
+}
+table.normalTable th, table.normalTable td {
+	padding: .41em;
+}
+table.normalTable th, table.condensedTable th {
+	border-top: 2px solid black;
+	font-size: 60%;
+}
+table.normalTable td, table.condensedTable td {
+	border-bottom: 1px solid black;
+	vertical-align: middle;
+	font-size: 60%;
+}
+table.normalTable td:first-child {
+	font-variant: small-caps;
+}
+table.normalTable tr:last-child td, table.condensedTable tr:last-child td {
+	border-bottom: 2px solid black;
+}
+table.condensedTable th, table.condensedTable td {
+	text-align: left;
+	padding-right: 1em;
+}
+table.condensedTable {
+	margin-bottom: 1.5em;
+}
+.subtabhead {
+	text-align: center;
+	border-top: 1px solid black;
+}
+strong.id {
+	color: darkgreen;
+}
+strong.ib {
+	color: darkblue;
+}
+
+dl#outline {
+	font-size: 80%;
+}
+dl#outline dt {
+	float: left;
+	margin-right: 0.5em;
+}
+dl#outline dt:after {
+	content: ": ";
+}
+
+a {
+	text-decoration: none;
+	color: #04A;
+}
+.mathblock {
+	text-align: center;
+}
+
+.sf {
+	font-family: "cmss8", sans-serif;
+	font-size:90%;
+	font-style: normal;
+}
+.sc {
+	font-variant: small-caps;
+	font-size:90%;
+	font-style: normal;
+}
+.tt, code {
+	font-family: "Hasklig", monospace;
+	font-style: normal;
+}
+.underline {
+	text-decoration: underline;
+}
+.gnode {
+	font-family: "cmss8", sans-serif;
+	font-style: normal;
+	font-size: 80%;
+	text-align: center;
+	border: 1.5px solid #808080;
+	border-radius: .8em;
+	padding: .25em;
+	margin: 0;
+	display: inline-block;
+	background: linear-gradient(#FCFCFC, #DADADA);
+}
+.gvar {
+	font-style: normal;
+	display: inline-block;
+	font-family: "cmss8", sans-serif;
+	font-size: 80%;
+	border: 1.5px dashed #000;
+	border-radius: 1em;
+	padding: .2em;
+	margin: 0;
+	background: linear-gradient(#FDFFFD, #DBFFDB);
+}
+.ginode {
+	font-style: normal;
+	display: inline-block;
+	font-family: "cmss8", sans-serif;
+	font-size: 80%;
+	border: 1.5px dotted #004;
+	color: #004;
+	border-radius: 1em;
+	padding: .2em;
+	margin: 0;
+	background: linear-gradient(#EEFFFF, #C2E1E1);
+}
+.iedge {
+	font-style: normal;
+	color: #520;
+	display: inline-block;
+	font-family: "cmss8", sans-serif;
+	font-size: 80%;
+	margin: 0;
+	padding-right: .1em;
+	padding-left: .1em;
+}
+.markupf {
+	font-style: normal;
+	color: #503;
+	display: inline-block;
+	font-family: "cmss8", sans-serif;
+	font-size: 80%;
+	margin: 0;
+	padding-right: .1em;
+	padding-left: .1em;
+}
+.shap {
+	font-style: normal;
+	font-size: 80%;
+	font-variant: small-caps;
+	border: 1px solid black;
+	padding: .1em;
+	display: inline-block;
+	background-color: #FFFAD8;
+}
+.tnode {
+	font-style: normal;
+	font-size: 80%;
+	font-family: "cmss8", sans-serif;
+	border: 1px solid black;
+	padding: .2em;
+	display: inline-block;
+	background-color: #FFF;
+}
+.stack {
+	display: inline-block;
+	position: relative;
+	top: 1em;
+	margin-top: -1em;
+	text-align: center;
+}
+/*
+.stack span:last-child {
+	position: relative;
+	top: -0.9em;
+}*/
+.stack-tab {
+	display: inline-block;
+	vertical-align: middle;
+}
+.edge {
+	font-style: normal;
+	display: inline-block;
+	color: #0000FF;
+	font-family: "cmss8", sans-serif;
+	font-size: 80%;
+	margin: 0;
+	padding-right: .1em;
+	padding-left: .1em;
+}
+img.tip {
+	margin: 0;
+}
+.uri {
+	font-style: normal;
+	display: inline-block;
+	font-family: "cmss8", sans-serif;
+	font-size: 65%;
+}
+.uris code {
+	font-size: 70%;
+}
+.arc {
+	color: #BF0040;
+	margin: 0;
+	padding: 0;
+}
+.gelab {
+	font-style: normal;
+	color: #0000FF;
+	font-family: "cmss8", sans-serif;
+	font-size: 90%;
+	display: inline-block;
+}
+.gielab {
+	font-style: normal;
+	color: #530;
+	display: inline-block;
+	font-family: "cmss8", sans-serif;
+	font-size: 90%;
+}
+.circled {
+	border: 1px solid black;
+	border-radius: 1em;
+	padding-left: .5em;
+	padding-right: .5em;
+	margin-right: 1em;
+}
+.nobreak {
+	display: inline-block;
+}
+div.examplecode {
+	font-size: 80%;
+}
+.ref-NONE {
+	color: red;
+}
+/* ************************/
+/*                        */
+/*  Style of definitions  */
+/*                        */
+/* ************************/
+dl.definition {
+	counter-increment: definitions;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	padding: 0.5em;
+	background-color: #E6EBF2;
+	border: 1px solid #B5C4D9;
+	border-radius: 0.8em;
+	page-break-inside: avoid;
+	font-size: 70%;
+}
+dl.definition dt:before {
+	content: "Definition " counter(definitions) " (";
+	font-weight: bold;
+	font-style: normal;
+}
+dl.definition dt:after {
+	font-weight: bold;
+	content: ")";
+	font-style: normal;
+}
+dl.definition dt {
+	border-bottom: 1px solid #849CC0;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+dl.definition dd {
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	font-style: italic;
+	text-indent: 0.3em;
+}
+dl.definition dd p {
+	margin: 0;
+	padding: 0;
+}
+dl.definition dd em[id] {
+	font-style: normal;
+}
+
+/* ************************/
+/*                        */
+/*  Style of examples     */
+/*                        */
+/* ************************/
+div.example {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	font-style: italic;
+	counter-increment: examples;
+}
+div.example em[id] {
+	font-style: normal;
+}
+/*div.example p:first-child {
+	text-indent: 0;
+}*/
+div.example p:first-child:before {
+	content: "Example " counter(examples) " — ";
+	font-weight: bold;
+	font-style: normal;
+}
+
+/*****************/
+/*  Other stuff  */
+/*****************/
+
+#tab-gnn tr td:first-child {
+	margin-left: 5em;
+	padding-left: 5em;
+}
+#tab-gnn td {
+	text-align: left;
+}
+
+#unesco {
+	margin-left: 61%;
+	text-align: left;
+	font-family: "cmss8", sans-serif;
+	font-size: 50%;
+}
+#unesco > p {
+	background-color: #ededed;
+	margin-bottom: 0;
+	margin-right: 2.8em;
+}
+#unesco > p:before {
+	content: "🌎 ";
+	color: black;
+}
+#unesco > p:after {
+	content: " ×";
+	color: black;
+}
+#unesco > div {
+	padding: .2em;
+	background-color: #ededed;
+	border: 1px solid black;
+}
+.html-h1 {
+	font-size: 185%;
+	font-weight: bold;
+}
+.html-h2 {
+	font-size: 145%;
+	font-weight: bold;
+}
+#fig-rdbCrime div {
+	font-family: Hasklig;
+	font-size: 90%;
+}
+#fig-rdbCrime p {
+	font-size: 130%;
+	font-weight: bold;
+	text-align: left;
+	margin-bottom: 0;
+}
+#fig-rdbCrime table th {
+	border-bottom: 2px solid black;
+}
+#report {
+	float:left;
+	width: 60%;
+}
+#report p {
+	margin-left: 1em;
+}
+#claimant {
+	margin-left: 61%;
+}
+

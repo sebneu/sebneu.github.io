@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="/reveal.js/dist/reset.css">
 		<link rel="stylesheet" href="/reveal.js/dist/reveal.css">
         <link rel="stylesheet" href="/reveal.js/dist/theme/simple.css" id="theme">
-        <link rel="stylesheet" href="/reveal.js/css/style.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="/reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
@@ -35,7 +35,7 @@
                         <li><span class="author"><a href="https://orcid.org/0000-0001-8907-5348">José Emilio Labra Gayo</a></span>, <span class="affiliation">Universidad de Oviedo, <span class="country">Spain</span></span></li>
                         <li><span class="author"><a href="https://orcid.org/0000-0002-6955-7718">Sabrina Kirrane</a></span>, <span class="affiliation">WU Vienna, <span class="country">Austria</span></span></li>
                         <li><span class="author"><a href="https://orcid.org/0000-0003-3831-9706">Roberto Navigli</a></span>, <span class="affiliation">Sapienza University of Rome, <span class="country">Italy</span></span></li>
-                        <li><span class="author"><a href="https://orcid.org/0000-0002-9804-4882">Sebastian Neumaier</a></span>, <span class="affiliation">WU Vienna, <span class="country">Austria</span></span></li>
+                        <li><span class="author"><a href="https://orcid.org/0000-0002-9804-4882">Sebastian Neumaier</a></span>, <span class="affiliation">St. Pölten University of Applied Sciences, <span class="country">Austria</span></span></li>
                         <li><span class="author"><a href="https://orcid.org/0000-0001-7112-3516">Axel-Cyrille Ngonga Ngomo</a></span>, <span class="affiliation">DICE, Universität Paderborn, <span class="country">Germany</span></span></li>
                         <li><span class="author"><a href="https://orcid.org/0000-0001-5670-1146">Axel Polleres</a></span>, <span class="affiliation">WU Vienna, <span class="country">Austria</span></span></li>
                         <li><span class="author"><a href="https://orcid.org/0000-0002-4162-8334">Sabbir M. Rashid</a></span>, <span class="affiliation">Tetherless World Constellation, Rensselaer Polytechnic Institute, <span class="country">USA</span></span></li>
@@ -47,9 +47,9 @@
                     </ul>
                 </section>
                 <section id="sec-introduction" class="chapter">
-                    <h2>Introduction</h2>
+                    <h2>1. Introduction</h2>
                     <ul>
-                        <li>``Knowledge graph'' in the literature since (at least) 1972</li>
+                        <li>"Knowledge graph" in the literature since (at least) 1972</li>
                         <li>Modern incarnation stems from Google Knowledge Graph (2012)</li>
                         <li>Use graphs to <b>represent data</b>, enhanced with some way to <b>explicitly represent knowledge</b></li>
                     </ul>
@@ -531,7 +531,7 @@
                     </dl>
                 </section>
                 <section class="chapter" id="sec-graph">
-                        <h2>Data Graphs</h2>
+                        <h2>2. Data Graphs</h2>
                         <ul>
                             <li>Graph-structured data models</li>
                             <li>Graph query languages</li>
@@ -539,7 +539,7 @@
                 </section>
                 <section>
                     <section id="ssec-graphModels" class="section">
-                        <h3>Models</h3>
+                        <h3>2.1 Models</h3>
                         <ul>
                             <li>Consider example data about attractions, events, services, etc.</li>
                             <li>Initial tabular / relational schema with five columns:</li>
@@ -578,7 +578,18 @@
                         </ul>
                     </section>
                     <section>
+                        <div class="examplecode">
+                            <script src="http://gist-it.appspot.com/https://github.com/knowledge-graphs-tutorial/examples/blob/main/Section2_Data_Graphs/2_1_1_Directed_edge_labelled_graphs/figure1.ttl"></script>
+                        </div>
+                    </section>
+                    <section>
                         <h4 id="subsub-heterograph" class="subsection">Heterogeneous graphs</h4>
+                        <ul>
+                            <li>Each node and edge is assigned one type</li>
+                            <li>Support only one-to-one relation between nodes and types</li>
+                            <li><em>Homogeneous</em> edge: between nodes of same type</li>
+                            <li><em>Heterogeneous</em> edge: between nodes of different type</li>
+                        </ul>
                     </section>
                     <section>
                         <figure id="fig-cap">
@@ -592,6 +603,12 @@
                         </figure>
                         <figcaption>Data about capitals and countries in a directed edge-labelled graph and a heterogeneous graph</figcaption>
                     </figure>
+                    </section>
+
+                    <section>
+                        <div class="examplecode">
+                            <script src="http://gist-it.appspot.com/https://github.com/knowledge-graphs-tutorial/examples/blob/main/Section2_Data_Graphs/2_1_2_Heterogeneous_graphs/figure2a.ttl"></script>
+                        </div>
                     </section>
 
                     <section><h4 id="sssec-propgraph" class="subsection">Property graphs</h4>
@@ -612,6 +629,16 @@
                             <figcaption>Property graph with companies offering flights between Santiago and Arica</figcaption>
                         </figure>
                     </section>
+                    <section>
+                        <div class="examplecode">
+                            <script src="http://gist-it.appspot.com/https://github.com/knowledge-graphs-tutorial/examples/blob/main/Section2_Data_Graphs/2_1_3_Property_graphs/figure3a.ttl"></script>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="examplecode">
+                            <script src="http://gist-it.appspot.com/https://github.com/knowledge-graphs-tutorial/examples/blob/main/Section2_Data_Graphs/2_1_3_Property_graphs/figure3b.cypher"></script>
+                        </div>
+                    </section>
 
                     <section><h4 id="subsub-graphdataset" class="subsection">Graph dataset</h4>
                     </section>
@@ -622,9 +649,19 @@
                             <figcaption>Graph dataset with two named graphs and a default graph describing events and routes</figcaption>
                         </figure>
                     </section>
+                    
+                    <section>
+                        <div class="examplecode">
+                            <script src="http://gist-it.appspot.com/https://github.com/knowledge-graphs-tutorial/examples/blob/main/Section2_Data_Graphs/2_1_4_Graph_dataset/figure4.trig"></script>
+                        </div>
+                    </section>
 
                     <section>
                         <h4 id="sssec-othergraphs" class="subsection">Other graph data models</h4>
+                        <ul>
+                            <li>Complex nodes: individual edges, nested graphs, hypernodes</li>
+                            <li>Complex edges: hypergraph</li>
+                        </ul>
                     </section>
                     <section>
                         <h4 id="sssec-graphstore" class="subsection">Graph stores</h4>
@@ -633,7 +670,7 @@
                 
                 <section>
                     <section id="ssec-querying" class="section">
-                        <h3>Querying</h3>
+                        <h3>2.2 Querying</h3>
                     </section>
                     <section>
                         <h4 id="sssec-graphpatterns" class="subsection">Graph patterns</h4>
@@ -681,6 +718,11 @@
                             <div style="height:.5em;">&nbsp;</div>
                             <figcaption>Graph pattern (left) with mappings generated over the graph of Figure&nbsp;<a href="#fig-delg">1</a> (right)</figcaption>
                         </figure>
+                    </section>
+                    <section>
+                        <div class="examplecode">
+                            <script src="http://gist-it.appspot.com/https://github.com/knowledge-graphs-tutorial/examples/blob/main/Section2_Data_Graphs/2_2_1_Graph_patterns/figure5.sparql"></script>
+                        </div>
                     </section>
                     <section>
                         <h4 id="sssec-complexpatterns" class="subsection">Complex graph patterns</h4>
@@ -744,6 +786,11 @@
                         </figure>
                     </section>
                     <section>
+                        <div class="examplecode">
+                            <script src="http://gist-it.appspot.com/https://github.com/knowledge-graphs-tutorial/examples/blob/main/Section2_Data_Graphs/2_2_2_Complex_graph_patterns/figure6.sparql"></script>
+                        </div>
+                    </section>
+                    <section>
                         <h4 id="sssec-navpatterns" class="subsection">Navigational graph patterns</h4>
                     </section>
                     <section>
@@ -789,16 +836,21 @@
                         </figure>
                     </section>
                     <section>
+                        <div class="examplecode">
+                            <script src="http://gist-it.appspot.com/https://github.com/knowledge-graphs-tutorial/examples/blob/main/Section2_Data_Graphs/2_2_3_Navigational_graph_patterns/figure7.sparql"></script>
+                        </div>
+                    </section>
+                    <section>
                         <h4 id="app-qother" class="subsection">Other features</h4>
                     </section>
                 </section>
 
                 <section id="sec-knowledge" class="chapter">
-                    <h2>Schema, Identity, Context</h2>
+                    <h2>3. Schema, Identity, Context</h2>
                 </section>
                 <section>
                     <section id="sec-schema" class="section">
-                        <h3>Schema</h3>
+                        <h3>3.1. Schema</h3>
                     </section>
                     <section>
                         <h4 id="sec-semSchema" class="subsection">Semantic schema</h4>
@@ -879,7 +931,7 @@
                 </section>
                 <section>
                     <section id="sec-identity" class="section">
-                        <h3>Identity</h3>
+                        <h3>3.2. Identity</h3>
                     </section>
                     <section>
                         <h4 id="subsec-globalIdentifiers" class="subsection">Persistent identifiers</h4>
@@ -924,7 +976,7 @@
 
                 <section id="ssec-knowledgeContext" class="section">
                     <section>
-                        <h3>Context</h3>
+                        <h3>3.3. Context</h3>
                     </section>
                     <section>
                         <h4 id="sssec-direct-representation" class="subsection">Direct representation</h4>
@@ -990,7 +1042,7 @@
                 </section>
 
                 <section id="sec-deductive" class="chapter">
-                    <h2>Deductive Knowledge</h2>
+                    <h2>4. Deductive Knowledge</h2>
                 </section>
                 <section>
                     <figure id="fig-bgpFS">
@@ -1000,7 +1052,7 @@
                 </section>
                 <section>
                     <section id="ssec-ontologies" class="section">
-                        <h3>Ontologies</h3>
+                        <h3>4.1. Ontologies</h3>
                     </section>
                     <section>
                         <h4 id="sssec-interpretations" class="subsection">Interpretations</h4>
@@ -1179,7 +1231,7 @@
                 </section>
                 <section>
                     <section id="sec-ontSemantics" class="section">
-                        <h3>Semantics and Entailment</h3>
+                        <h3>4.2. Semantics and Entailment</h3>
                     </section>
                     <section>
                         <h4 id="sssec-model-theory" class="subsection">Model-theoretic semantics</h4>
@@ -1193,7 +1245,7 @@
                 </section>
                 <section>
                     <section id="ssec-reasoning" class="section">
-                        <h3>Reasoning</h3>
+                        <h3>4.3. Reasoning</h3>
                     </section>
                     <section>
                         <h4 id="sec-rules" class="subsection">Rules</h4>
@@ -1255,7 +1307,7 @@
                 </section>
 
                 <section id="sec-inductive" class="chapter">
-                    <h2>Inductive Knowledge</h2>
+                    <h2>5. Inductive Knowledge</h2>
                 </section>
                 <section>
                     <figure id="fig-ind">
@@ -1266,7 +1318,7 @@
 
                 <section>
                     <section id="sec-gAnalytics" class="section">
-                        <h3>Graph Analytics</h3>
+                        <h3>5.1. Graph Analytics</h3>
                     </section>
                     <section>
                         <figure id="fig-chileTransport">
@@ -1316,7 +1368,7 @@
                 
                 <section>
                     <section id="ssec-embeddings" class="section">
-                        <h3>Knowledge Graph Embeddings</h3>
+                        <h3>5.2. Knowledge Graph Embeddings</h3>
                     </section>
                     <section>
                         <h4 id="sssec-translational-models" class="subsection">Translational models</h4>
@@ -1360,7 +1412,7 @@
 
                 <section>
                     <section id="ssec-gnns" class="section">
-                        <h3>Graph Neural Networks</h3>
+                        <h3>5.3. Graph Neural Networks</h3>
                     </section>
                     <section>
                         <h4 id="sssec-recursive-gnn" class="subsection">Recursive graph neural networks</h4>
@@ -1373,7 +1425,7 @@
                 <section>
                     <section id="ssec-symlearn" class="section">
 
-                        <h3>Symbolic Learning</h3>
+                        <h3>5.4. Symbolic Learning</h3>
                     </section>
                     <section>
                         <figure id="fig-airports">
@@ -1390,18 +1442,18 @@
                 </section>
 
                 <section id="sec-create" class="chapter">
-                    <h2>Creation and Enrichment</h2>
+                    <h2>6. Creation and Enrichment</h2>
                 </section>
 
                 <section>
                     <section id="sssec-graphCreationHuman" class="section">
-                        <h3>Human Collaboration</h3>
+                        <h3>6.1. Human Collaboration</h3>
                     </section>
                 </section>
 
                 <section>
                     <section id="sssec-graphCreationText" class="section">
-                        <h3>Text Sources</h3>
+                        <h3>6.2. Text Sources</h3>
                     </section>
                     <section>
                         <figure id="fig-textExtract">
@@ -1428,7 +1480,7 @@
 
                 <section>
                     <section id="sssec-graphCreationSemistructured" class="section">
-                        <h3>Markup Sources</h3>
+                        <h3>6.3. Markup Sources</h3>
                     </section>
                     <section>
                         <figure id="fig-html">
@@ -1487,7 +1539,7 @@
 
                 <section>
                     <section id="sssec-graphCreationStructured" class="section">
-                        <h3>Structured Sources</h3>
+                        <h3>6.4. Structured Sources</h3>
                     </section>
                     <section>
                         <h4 id="sssec-mapping-from-tables" class="subsection">Mapping from tables</h4>
@@ -1573,7 +1625,7 @@
             
                 <section>
                     <section id="ssec-knowledgeConceptual" class="section">
-                        <h3>Schema/Ontology Creation</h3>
+                        <h3>6.5. Schema/Ontology Creation</h3>
                     </section>
                     <section>
                         <h4 id="sssec-ontology-engineering" class="subsection">Ontology engineering</h4>
@@ -1584,12 +1636,12 @@
                 </section>
                 
                 <section id="sec-quality" class="chapter">
-                    <h2>Quality Assessment</h2>
+                    <h2>7. Quality Assessment</h2>
                 </section>
             
                 <section>
                     <section id="ssec-accuracy" class="section">
-                        <h3>Accuracy</h3>
+                        <h3>7.1. Accuracy</h3>
                     </section>
                     <section>
                         <h4 id="sssec-syntactic-accuracy" class="subsection">Syntactic accuracy</h4>
@@ -1604,7 +1656,7 @@
             
                 <section>
                     <section id="sssec-coverage" class="section">
-                        <h3>Coverage</h3>
+                        <h3>7.2. Coverage</h3>
                     </section>
                     <section>
                         <h4 id="sssec-completeness" class="subsection">Completeness</h4>
@@ -1614,9 +1666,9 @@
                     </section>
                 </section>
             
-                    <section>
+                <section>
                         <section id="ssec-coherency" class="section">
-                        <h3>Coherency</h3>
+                        <h3>7.3. Coherency</h3>
                     </section>
                     <section>
                         <h4 id="sssec-consistency" class="subsection">Consistency</h4>
@@ -1628,7 +1680,7 @@
             
                 <section>
                     <section id="ssec-succinctness" class="section">
-                        <h3>Succinctness</h3>
+                        <h3>7.4. Succinctness</h3>
                     </section>
                     <section>
                         <h4 id="sssec-conciseness" class="subsection">Conciseness</h4>
@@ -1643,16 +1695,16 @@
             
                 <section>
                     <section id="ssec-other-quality" class="section">
-                        <h3>Other Quality Dimensions</h3>
+                        <h3>7.5. Other Quality Dimensions</h3>
                     </section>
                 </section>
                 <section id="sec-refine" class="chapter">
-                    <h2>Refinement</h2>
+                    <h2>8. Refinement</h2>
                 </section>
 
                 <section>
                     <section id="ssec-completion" class="section">
-                        <h3>Completion</h3>
+                        <h3>8.1. Completion</h3>
                     </section>
                     <section>
                         <h4 id="sssec-general-link-prediction" class="subsection">General link prediction</h4>
@@ -1673,7 +1725,7 @@
 
                 <section>
                     <section id="ssec-correction" class="section">
-                        <h3>Correction</h3>
+                        <h3>8.2. Correction</h3>
                     </section>
                     <section>
                         <h4 id="sssec-fact-validation" class="subsection">Fact validation</h4>
@@ -1685,16 +1737,16 @@
 
                 <section>
                     <section id="ssec-other-refinement-tasks" class="section">
-                        <h3>Other Refinement Tasks</h3>
+                        <h3>8.3. Other Refinement Tasks</h3>
                     </section>
                 </section>
 
                 <section id="sec-publish" class="chapter">
-                    <h2>Publication</h2>
+                    <h2>9. Publication</h2>
                 </section>
                 <section>
                     <section id="ssec-principles" class="section">
-                        <h3>Best Practices</h3>
+                        <h3>9.1. Best Practices</h3>
                     </section>
                     <section>
                         <h4 id="ssec-fair" class="subsection">FAIR Principles</h4>
@@ -1712,7 +1764,7 @@
 
                 <section>
                     <section id="ssec-access-protocols" class="section">
-                        <h3>Access Protocols</h3>
+                        <h3>9.2. Access Protocols</h3>
                     </section>
                     <section>
                         <figure id="fig-access">
@@ -1738,7 +1790,7 @@
                 </section>
                 <section>
                     <section id="ssec-UsageControl" class="section">
-                        <h3>Usage Control</h3>
+                        <h3>9.3. Usage Control</h3>
                     </section>
                     <section>
                         <h4 id="sssec-licensing" class="subsection">Licensing</h4>
@@ -1779,12 +1831,12 @@
                 </section>
 
                 <section id="sec-kgs" class="chapter">
-                    <h2>Knowledge Graphs in Practice</h2>
+                    <h2>10. Knowledge Graphs in Practice</h2>
                 </section>
 
                 <section>
                     <section id="sec-openkgs" class="section">
-                        <h3>Open Knowledge Graphs</h3>
+                        <h3>10.1. Open Knowledge Graphs</h3>
                     </section>
                     <section>
                         <h4 id="sssec-dbpedia" class="subsection">DBpedia</h4>
@@ -1808,7 +1860,7 @@
 
                 <section>
                     <section id="ssec-enterprise-kgs" class="section">
-                        <h3>Enterprise Knowledge Graphs</h3>
+                        <h3>10.2. Enterprise Knowledge Graphs</h3>
                     </section>
                     <section>
                         <h4 id="sssec-web-search" class="subsection">Web search</h4>
@@ -1828,7 +1880,7 @@
                 </section>
 
                 <section id="sec-conclude" class="chapter">
-                    <h2>Summary and Conclusion</h2>
+                    <h2>11. Summary and Conclusion</h2>
                 </section>
 
                 <section>
