@@ -532,10 +532,8 @@
                 </section>
                 <section class="chapter" id="sec-graph">
                         <h2>2. Data Graphs</h2>
-                        <ul>
-                            <li>Graph-structured data models</li>
-                            <li>Graph query languages</li>
-                        </ul>
+                        <p>Graph-structured data models</p>
+                        <p>Graph query languages</p>
                 </section>
                 <section>
                     <section id="ssec-graphModels" class="section">
@@ -641,6 +639,11 @@
                     </section>
 
                     <section><h4 id="subsub-graphdataset" class="subsection">Graph dataset</h4>
+                        <ul>
+                            <li>Consists of a set of "named graphs"</li>
+                            <li>Named graph is a pair of a graph ID and a graph</li>
+                            <li>Graph without an ID is "default graph"</li>
+                        </ul>
                     </section>
 
                     <section>
@@ -665,15 +668,30 @@
                     </section>
                     <section>
                         <h4 id="sssec-graphstore" class="subsection">Graph stores</h4>
+                        <ul>
+                            <li>Relational databases: triple table, vertical partitioning, property tables</li>
+                            <li>Distributed graphs over multiple machines</li>
+                            <li>Optimized access for nodes, edges and adjacent elements</li>
+                        </ul>
                     </section>
                 </section>
                 
                 <section>
                     <section id="ssec-querying" class="section">
                         <h3>2.2 Querying</h3>
+                        <p>Languages for querying graphs</p>
+                        <ul>
+                            <li>SPARQL</li>
+                            <li>Cypher, Gremlin, G-CORE</li>
+                        </ul>
                     </section>
                     <section>
                         <h4 id="sssec-graphpatterns" class="subsection">Graph patterns</h4>
+                        <ul>
+                            <li>Follow same model as data graph being queried</li>
+                            <li>Constants: <span class="gnode">Food Festival</span> or <span class="gelab">venue</span></li>
+                            <li>Variables: <span class="gvar">?event</span> or <span class="gelab" style="color: black">?rel</span></li>
+                        </ul>
                     </section>
                     <section>
                         <figure id="fig-gp">
@@ -725,9 +743,22 @@
                         </div>
                     </section>
                     <section>
-                        <h4 id="sssec-complexpatterns" class="subsection">Complex graph patterns</h4>
+                        <h4>Semantics for pattern evaluation</h4>
+                        <ul>
+                            <li><em>Homomorphism-based</em>: multiple variables mapped to same term</li>
+                            <li><em>Isomorphism-based</em>: nodes and/or edges mapped to unique terms</li>
+                        </ul>
                     </section>
                     <section>
+                        <h4 id="sssec-complexpatterns" class="subsection">Complex graph patterns</h4>
+                        <ul>
+                            <li>Use of relational algebra to combine and/or transform graph patterns</li>
+                            <li><em>Conjunctive queries</em>: projected variables</li>
+                            <li><em>First-order queries</em>: full use of relational operators</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>Conjunctive queries</h4>
                         <figure id="fig-cq">
                             <img src="images/fig-cq.svg" alt="Conjunctive query" class="multi">
                             <div style="height:1em;">&nbsp;</div>
@@ -786,14 +817,33 @@
                         </figure>
                     </section>
                     <section>
+                        <h4>First-order queries</h4>
+                        <figure id="fig-cgp">
+                            <img class="inlined" src="images/fig-cgp1.svg" alt="Complex graph pattern 1">
+                            <img class="inlined" src="images/fig-cgp2.svg" alt="Complex graph pattern 2"><br>
+                            <img class="inlined" src="images/fig-cgp3.svg" alt="Complex graph pattern 3">
+                            <img class="inlined" src="images/fig-cgp4.svg" alt="Complex graph pattern 4"><br>
+                            <img class="inlined" src="images/fig-cgp5.svg" alt="Complex graph pattern 5">
+                            <div>Q:=((((Q1 ∪ Q2) ⊳ Q3) ⋈ Q4) ⋈ Q5),<br>
+                                Q(G)=<table class="condensedTable" style="position:relative;top:.6em;display:inline-block;vertical-align:middle;"><thead><tr><th>?event</th><th>?start</th><th>?name</th></tr></thead><tbody><tr><td><code>EID16</code></td><td></td><td><code>Food Truck</code></td></tr></tbody></table>
+                            </div>
+                            <figcaption>Complex graph pattern (Q) with mappings generated (Q(G)) over the graph of Figure&nbsp;<a href="#fig-delg">1</a> (G)</figcaption>
+                        </figure>
+                    </section>
+                    <section>
                         <div class="examplecode">
                             <script src="https://gist-it.appspot.com/https://github.com/knowledge-graphs-tutorial/examples/blob/main/Section2_Data_Graphs/2_2_2_Complex_graph_patterns/figure6.sparql"></script>
                         </div>
                     </section>
                     <section>
                         <h4 id="sssec-navpatterns" class="subsection">Navigational graph patterns</h4>
+                        <ul>
+                            <li><em>Path expressions</em>: regular expressions matching arbitrary-length paths between two nodes</li>
+                            <li><em>Operations</em>: inverse, Kleene star, disjunction, concatenation</li>
+                        </ul>
                     </section>
                     <section>
+                        <h4>Potentially infinite number of matched paths</h4>
                         <figure id="fig-path">
                             <img class="inlined" src="images/fig-path1.svg" alt="Path matching 1">
                             <img class="inlined" src="images/fig-path2.svg" alt="Path matching 2">
@@ -803,6 +853,7 @@
                         </figure>
                     </section>
                     <section>
+                        <h4>Complex navigational graph patterns</h4>
                         <figure id="fig-ngp">
                             <img src="images/fig-ngp.svg" alt="Navigational graph pattern" class="multi">
                             <div style="height:1em;">&nbsp;</div>
@@ -842,6 +893,14 @@
                     </section>
                     <section>
                         <h4 id="app-qother" class="subsection">Other features</h4>
+                        <ul>
+                            <li>Aggregation (GROUP BY, COUNT, etc.)</li>
+                            <li>Filters and datatype operators (e.g., range queries)</li>
+                            <li>Query federation for remotely hosted graphs</li>
+                            <li>Updating graphs</li>
+                            <li>Semantic entailment</li>
+                            <li>etc.</li>
+                        </ul>
                     </section>
                 </section>
 
@@ -851,6 +910,11 @@
                 <section>
                     <section id="sec-schema" class="section">
                         <h3>3.1. Schema</h3>
+                        <ul>
+                            <li><em>Semantic schema</em>: high-level terms (vocabulary or terminology), facilitates reasoning</li>
+                            <li><em>Validating schema</em>: defines constraints, allows for validating existing graph data</li>
+                            <li><em>Emergent schema</em>: automatically extracted schema (graph summary)</li>
+                        </ul>
                     </section>
                     <section>
                         <h4 id="sec-semSchema" class="subsection">Semantic schema</h4>
@@ -932,6 +996,9 @@
                 <section>
                     <section id="sec-identity" class="section">
                         <h3>3.2. Identity</h3>
+                        <p>Globally-unique identifiers to avoid naming clashes</p>
+                        <p>External identity links to disambiguate nodes</p>
+                        </p>
                     </section>
                     <section>
                         <h4 id="subsec-globalIdentifiers" class="subsection">Persistent identifiers</h4>
@@ -977,6 +1044,7 @@
                 <section id="ssec-knowledgeContext" class="section">
                     <section>
                         <h3>3.3. Context</h3>
+                        <p>Facts can be considered <em>true</em> with respect to a certain <em>context</em></p>
                     </section>
                     <section>
                         <h4 id="sssec-direct-representation" class="subsection">Direct representation</h4>
@@ -1047,12 +1115,17 @@
                 <section>
                     <figure id="fig-bgpFS">
                         <img src="images/fig-bgpFS.svg" alt="Graph pattern querying for names of festivals in Santiago">
-                        <figcaption>Graph pattern querying for names of festivals in Santiago</figcaption>
+                        <figcaption>Graph pattern querying for names of festivals in Santiago in Figure&nbsp;<a href="#fig-delg">1</a></figcaption>
                     </figure>
                 </section>
                 <section>
                     <section id="ssec-ontologies" class="section">
                         <h3>4.1. Ontologies</h3>
+                        <ul>
+                            <li>Concrete, formal representations of what terms mean</li>
+                            <li>Can be used to automate entailment</li>
+                            <li>Most popular is the Web Ontology Language (OWL)</li>
+                        </ul>
                     </section>
                     <section>
                         <h4 id="sssec-interpretations" class="subsection">Interpretations</h4>
@@ -1232,6 +1305,7 @@
                 <section>
                     <section id="sec-ontSemantics" class="section">
                         <h3>4.2. Semantics and Entailment</h3>
+                        <p>The <span class="sc">Symmetric</span> feature, the definition <span class="gnode">nearby</span><img class="tip" src="images/edge-source.png" width="8" alt="arrow source"><span class="edge">type</span><img class="tip" src="images/edge-tip.png" width="15" alt="arrow tip rightward"><span class="gnode">Symmetric</span> and edge <span class="gnode">Santiago</span><img class="tip" src="images/edge-source.png" width="8" alt="arrow source"><span class="edge">nearby</span><img class="tip" src="images/edge-tip.png" width="15" alt="arrow tip rightward"><span class="gnode">Santiago&nbsp;Airport</span> entail the edge <span class="gnode">Santiago&nbsp;Airport</span><img class="tip" src="images/edge-source.png" width="8" alt="arrow source"><span class="edge">nearby</span><img class="tip" src="images/edge-tip.png" width="15" alt="arrow tip rightward"><span class="gnode">Santiago</span></p></p>
                     </section>
                     <section>
                         <h4 id="sssec-model-theory" class="subsection">Model-theoretic semantics</h4>
@@ -1837,45 +1911,128 @@
                 <section>
                     <section id="sec-openkgs" class="section">
                         <h3>10.1. Open Knowledge Graphs</h3>
+                        <p><em>“open means anyone can freely access, use, modify, and share for any purpose (subject, at most, to requirements that preserve provenance and openness)”</em></p>
+                        <ul>
+                            <li><em>Linked Open Datasets</em>: (RDF) graphs published under Linked Data principles</li>
+                            <li>Access through</li>
+                            <ul>
+                                <li>Dumps (RDF)</li>
+                                <li>Node lookups (Linked Data)</li>
+                                <li>Graph patterns (SPARQL)</li>
+                                <li>Edge patterns (Triple Pattern Fragments)</li>
+                            </ul>
+                        </ul>
                     </section>
                     <section>
                         <h4 id="sssec-dbpedia" class="subsection">DBpedia</h4>
+                        <ul>
+                            <li>Extracts graph of the semi-structured data in Wikipedia</li>
+                            <li>Enriched by links to external open resources</li>
+                            <li>Extracts labels, abstracts, interlanguage links, images, redirects, disambiguation pages, external links, internal pagelinks, homepages, categories, geocoordinates</li>
+                        </ul>
+                    </section>
+                    <section data-background-iframe="https://dbpedia.org/page/Santiago">
                     </section>
                     <section>
-                        <h4 id="sssec-yago" class="subsection">Yet Another Great Ontology</h4>
+                        <h4 id="sssec-yago" class="subsection">Yet Another Great Ontology (YAGO)</h4>
+                        <ul>
+                            <li>(Like DBpedia) extracts from Wikipedia</li>
+                            <li>Unified with the hierarchical structure of WordNet</li>
+                        </ul>
                     </section>
                     <section>
                         <h4 id="sssec-freebase" class="subsection">Freebase</h4>
+                        <ul>
+                            <li>General collection of human knowledge</li>
+                            <li>Curated and updated by human editors</li>
+                            <li>Acquired by Google in 2010 (Google Knowledge Graph)</li>
+                            <li>Migrated to Wikidata in 2015</li>
+                        </ul>
                     </section>
                     <section>
                         <h4 id="sssec-wikidata" class="subsection">Wikidata</h4>
+                        <ul>
+                            <li>Centralised, collaboratively-edited knowledge graph to supply Wikipedia</li>
+                            <li>Considered a secondary source that should reference primary sources</li>
+                            <li>Collaborative editing also on schema level</li>
+                            <li>Various access protocols</li>
+                            <li>Broad adoption, supported by Google, used in Apple's Siri, etc.</li>
+                        </ul>
+                    </section>
+                    <section data-background-iframe="https://www.wikidata.org/wiki/Q2887">
                     </section>
                     <section>
                         <h4 id="sssec-other-open-kgs" class="subsection">Other open cross-domain knowledge graphs</h4>
+                        <ul>
+                            <li><a href="https://babelnet.org/">BabelNet</a></li>
+                            <li>Cyc project</li>
+                            <li><a href="http://rtw.ml.cmu.edu/rtw/">Never Ending Language Learning (NELL)</a></li>
+                        </ul>
                     </section>
                     <section>
                         <h4 id="sssec-domain-specific-open-kgs" class="subsection">Domain-specific open knowledge graphs</h4>
+                        <ul>
+                            <li>Media, news, television, radio, e.g., BBC World Service Archive</li>
+                            <li>Government data, e.g., by the U.S. and U.K. governments</li>
+                            <li>Publications and academic literature, e.g., OpenCitations, SciGraph, Microsoft Academic Knowledge Graph</li>
+                            <li>Geographic, e.g., LinkedGeoData</li>
+                            <li>Life sciences, proteins, genes, drugs, diseases, e.g., Bio2RDF</li>
+                            <li>User-generated content, reviews, open source projects, e.g., Revyu</li>
+                            <li>Cultural heritage, music, law, theology, tourism</li>
+                        </ul>
                     </section>
                 </section>
 
                 <section>
                     <section id="ssec-enterprise-kgs" class="section">
                         <h3>10.2. Enterprise Knowledge Graphs</h3>
+                        <ul>
+                            <li>Highly diverse, proprietary graphs, following some high-level trends:</li>
+                            <ol>
+                                <li>Typically integrates a variety of external and internal sources</li>
+                                <li>Often very large, posing scalability challenges</li>
+                                <li>Refinement and updating tasks applied</li>
+                                <li>Ontologies tend to be lightweight, simple taxonomies</li>
+                            </ol>
+                        </ul>
                     </section>
                     <section>
                         <h4 id="sssec-web-search" class="subsection">Web search</h4>
+                        <ul>
+                            <li><a href="https://www.google.com/search?q=Santiago">Google Knowledge Graph</a>: <a href="https://blog.google/products/search/introducing-knowledge-graph-things-not/">"things not strings"</a></li>
+                            <li>Microsoft Bing</li>
+                        </ul>
                     </section>
                     <section>
                         <h4 id="sssec-commerce" class="subsection">Commerce</h4>
+                        <ul>
+                            <li>Amazon: products in the online marketplace</li>
+                            <li>eBay: product descriptions and shopping behaviour patterns</li>
+                            <li>Airbnb: accommodation, places, events, experiences, neighbourhoods, etc.</li>
+                            <li>Uber Eats: food and restaurants</li>
+                        </ul>
                     </section>
                     <section>
                         <h4 id="sssec-social-networks" class="subsection">Social networks</h4>
+                        <ul>
+                            <li>Facebook: celebrities, places, movies, music, etc.</li>
+                            <li>LinkedIn: users, jobs, skills, companies, places, schools, etc.</li>
+                            <li>Pinterest: users and interests</li>
+                        </ul>
                     </section>
                     <section>
                         <h4 id="sssec-finance" class="subsection">Finance</h4>
+                        <ul>
+                            <li>Bloomberg: financial data analytics, sentiment analysis based on news reports and tweets</li>
+                            <li>Thompson Reuters: people, organisations, equity instruments, industry classifications, etc.</li>
+                        </ul>
                     </section>
                     <section>
                         <h4 id="sssec-other-industries" class="subsection">Other industries</h4>
+                        <ul>
+                            <li>Health-care (IBM, AstraZeneca)</li>
+                            <li>Transport (Bosch)</li>
+                        </ul>
                     </section>
                 </section>
 
