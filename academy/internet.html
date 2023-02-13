@@ -17,7 +17,7 @@
 		<div class="reveal">
 			<div class="slides">
                 <section>
-                    <h1>Internet, WWW, usw.</h1>
+                    <h1>Über das Internet, das WWW, usw..</h1>
                     <h4>Sebastian Neumaier</h4>
                     <p>
                     
@@ -25,6 +25,14 @@
                     <p>
                     Quelle: <a href="https://medium.com/hackernoon/the-history-of-the-internet-cdb844ff460c">Medium - The History of the Internet</a>
                     </p>
+                  </section>
+                  <section>
+                    <h3>Seit wann gibt es das Internet? Wie funktioniert es?</h3>
+                    <img src="redblue.gif">
+                  </section>
+                  <section>
+                    <h3>Wozu gibt es das Internet? Raccoons in funny hats?</h3>
+                    <img src="racoon.png">
                   </section>
                   <section>
                     <script data-quiz>
@@ -207,6 +215,15 @@ Yet a revolution had begun...
                 </textarea>
               </section>
               <section>
+                <h3>Das Internetprotokoll</h3>
+                <p>
+                    <a href="https://de.wikipedia.org/wiki/Internetprotokollfamilie">TCP/IP-Protokolle</a> sind Vereinbarungen, nach der die Datenübertragung abläuft
+                </p>
+                  <p>
+                    <img src="ip_layer.png">
+                </p>
+              </section>
+              <section>
                 <h3>Ist das Internet das WWW?</h3>
                 <p>
                     Nein, wird aber oft so genannt...
@@ -232,8 +249,40 @@ Yet a revolution had begun...
                 </p>
               </section>
               <section>
-                <h3>HTML Tutorials</h3>
-                Youtube: <a src="https://www.youtube.com/playlist?list=PLuBK_vNnGp8Ba7GZV6_XUWLtWqWPFoUcu">Webseite erstellen</a>
+                <h3>Das Web spricht HTTP</h3>
+                <p>
+                    HTTP Anfrage (Request):
+                </p>
+                <p>
+                    <ul>
+                        <li>Eine Anfragezeile</li>
+                        <li>Eine Anzahl von Anfrage-Headern</li>
+                        <li>Eine leere Zeile</li>
+                        <li>Ein optionaler Nachrichtenkörper (Body)</li>
+                    </ul>
+                </p>
+              </section>
+              <section>
+                <h3>Beispiel einer HTTP Anfrage und Antwort</h3>
+                <pre><code data-trim data-noescape>
+$ curl -v --get www.google.com
+*   Trying 142.250.186.164:80...
+* Connected to www.google.com (142.250.186.164) port 80 (#0)
+> GET / HTTP/1.1
+> Host: www.google.com
+> User-Agent: curl/7.75.0
+> Accept: */*
+                </code></pre>
+                <pre><code data-trim data-noescape>
+< HTTP/1.1 200 OK
+< Date: Mon, 13 Feb 2023 09:31:16 GMT
+< Content-Type: text/html
+<
+<!doctype html>
+  <html itemscope="" itemtype="http://schema.org/WebPage" lang="de-AT">
+    <head>
+      ...
+                </code></pre>
               </section>
               <section>
                 <h3>The first Website</h3>
@@ -245,6 +294,10 @@ Yet a revolution had begun...
                 </p>
               </section>
               <section data-background-iframe="https://line-mode.cern.ch/www/hypertext/WWW/TheProject.html">
+              </section>
+              <section>
+                <h3>HTML Tutorials</h3>
+                Youtube: <a src="https://www.youtube.com/playlist?list=PLuBK_vNnGp8Ba7GZV6_XUWLtWqWPFoUcu">Webseite erstellen</a>
               </section>
 			</div>
 		</div>
