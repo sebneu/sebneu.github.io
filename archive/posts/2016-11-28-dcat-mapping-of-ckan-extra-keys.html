@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DCAT-mapping of CKAN “extra” keys — archived</title>
+<link rel="stylesheet" href="../../style.css">
+</head><body><div class="wrap">
+<p class="meta">Archived from sebneumaier.wordpress.com · post · 2016-11-28 · original: <a href="https://sebneumaier.wordpress.com/2016/11/28/dcat-mapping-of-ckan-extra-keys/">https://sebneumaier.wordpress.com/2016/11/28/dcat-mapping-of-ckan-extra-keys/</a></p>
+<h1>DCAT-mapping of CKAN “extra” keys</h1>
+<p>The CKAN software allows portal providers to include additional metadata fields in the metadata schema. When retrieving the metadata description of a dataset via the API, these keys are included in the resulting JSON under the key &#8220;extras&#8221;. However, it is not guaranteed that the DCAT conversion of the CKAN metadata contains these extra keys. Depending on the version and configuration of the <a href="https://github.com/ckan/ckanext-dcat">DCAT export-extension</a> there are three different cases:</p>
+<h3>1) Portal-specific mapping</h3>
+<p>The portal provider defines a mapping for certain CKAN fields to a specific RDF property.</p>
+<p>For instance, <a href="https://data.gov.ie/data">data.gov.ie</a> maps certain metadata keys to DCAT properties: the CKAN metadata description [<a href="https://data.gov.ie/api/rest/dataset/modes_of_travel">json</a>] for the dataset <a href="https://data.gov.ie/dataset/modes_of_travel">Modes of Travel in Dublin Region</a> maps the keys <em>theme-primary</em> to the DCAT property <em>dcat:theme</em> (see the exported DCAT metadata [<a href="https://data.gov.ie/dataset/modes_of_travel.rdf">rdf</a>]).</p>
+<h3>2) No mapping</h3>
+<p>Looking at the same dataset, we can see that there are other &#8220;extra&#8221; keys where no mapping to an RDF property exists, e.g., for the key <em>collection-name</em>. The metadata information will get lost if we only consider the exported DCAT.</p>
+<h3>3) Generic mapping by extension</h3>
+<p>Certain CKAN data portals map all available extra metadata keys by using the <em>dct:relation</em> (Dublin Core vocabulary) property. The key gets mapped to the <em>rdfs:label</em> property and the value to the <em>rdf:value</em> property, e.g., for the <em>contact-email</em> metadata key:</p>
+<pre class="brush: css; title: ; notranslate" title="">
+&lt;http://example.com/example-dataset&gt;
+   dct:relation [
+      rdfs:label &quot;contact-email&quot; ;
+      rdf:value &quot;example@email.com&quot;
+   ] ;
+</pre>
+<p>This generic mapping can be found on various data portals, for instance at <a href="https://data.gov.uk/">data.gov.uk</a>: e.g., the DCAT export [<a href="https://data.gov.uk/dataset/road-accidents-safety-data.rdf">rdf</a>] for the <a href="https://data.gov.uk/dataset/road-accidents-safety-data">Road Safety Data</a> contains all extra keys by using the <em>dct:relation</em> property.</p>
+<p>A more detailed report can be found <a href="../../files/2016/11/w3c_ckan_to_dcat.pdf">here</a>.</p>
+
+</div></body></html>

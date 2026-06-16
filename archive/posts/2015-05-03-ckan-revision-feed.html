@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CKAN Revision Feed — archived</title>
+<link rel="stylesheet" href="../../style.css">
+</head><body><div class="wrap">
+<p class="meta">Archived from sebneumaier.wordpress.com · post · 2015-05-03 · original: <a href="https://sebneumaier.wordpress.com/2015/05/03/ckan-revision-feed/">https://sebneumaier.wordpress.com/2015/05/03/ckan-revision-feed/</a></p>
+<h1>CKAN Revision Feed</h1>
+<p>CKAN provides an <a href="http://en.wikipedia.org/wiki/Atom_(standard)">Atom </a>feed to get updates on edited and created datasets and resources. By default, the feed can be found at <em>{portal-url}/revision/list?format=atom.</em></p>
+<p>In the Python code example I accessed the feed using the <a href="https://pypi.python.org/pypi/feedparser">feedparser</a> package. The titles of the feed entries are of the following form:</p>
+<p><em>r863bfa65-bfed-40b1-b6ee-e78275be3283 [ra2014:updated:resources]: REST API: Update Objekt ra2014</em></p>
+<p>I used the information within the square brackets: <em>ra2014 </em>is the internal dataset name, <em>updated</em> tells you if the dataset is created or updated and the third value, <em>resources, </em>appears only if a resource of the dataset has been edited.</p>
+<p><style>.gist table { margin-bottom: 0; }</style><div style="tab-size: 8" id="gist22035132" class="gist">
+    <div class="gist-file" translate="no" data-color-mode="light" data-light-theme="light">
+      <div class="gist-data">
+        
+<div class="js-gist-file-update-container js-task-list-container">
+      <div id="file-ckan_revision_reader-py" class="file my-2">
+    
+    <div itemprop="text"
+      class="Box-body p-0 blob-wrapper data type-python  "
+      style="overflow: auto" tabindex="0" role="region"
+      aria-label="ckan_revision_reader.py content, created by sebneu on 06:52PM on May 03, 2015."
+    >
+
+        
+<div class="js-check-hidden-unicode js-blob-code-container blob-code-content">
+
+  <template class="js-file-alert-template">
+  <div data-view-component="true" class="flash flash-warn flash-full d-flex flex-items-center">
+  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+    <span>
+      This file contains hidden or bidirectional Unicode text that may be interpreted or compiled differently than what appears below. To review, open the file in an editor that reveals hidden Unicode characters.
+      <a class="Link--inTextBlock" href="https://github.co/hiddenchars" target="_blank">Learn more about bidirectional Unicode characters</a>
+    </span>
+
+
+  <div data-view-component="true" class="flash-action">        <a href="{{ revealButtonHref }}" data-view-component="true" class="btn-sm btn">    Show hidden characters
+</a>
+</div>
+</div></template>
+<template class="js-line-alert-template">
+  <span aria-label="This line has hidden Unicode characters" data-view-component="true" class="line-alert tooltipped tooltipped-e">
+    <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+</span></template>
+
+  <table data-hpc class="highlight tab-size js-file-line-container" data-tab-size="4" data-paste-markdown-skip data-tagsearch-path="ckan_revision_reader.py">
+        <tr>
+          <td id="file-ckan_revision_reader-py-L1" class="blob-num js-line-number js-blob-rnum" data-line-number="1"></td>
+          <td id="file-ckan_revision_reader-py-LC1" class="blob-code blob-code-inner js-file-line">import datetime</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L2" class="blob-num js-line-number js-blob-rnum" data-line-number="2"></td>
+          <td id="file-ckan_revision_reader-py-LC2" class="blob-code blob-code-inner js-file-line">import feedparser</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L3" class="blob-num js-line-number js-blob-rnum" data-line-number="3"></td>
+          <td id="file-ckan_revision_reader-py-LC3" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L4" class="blob-num js-line-number js-blob-rnum" data-line-number="4"></td>
+          <td id="file-ckan_revision_reader-py-LC4" class="blob-code blob-code-inner js-file-line">FEED = &#39;<a href="https://www.data.gv.at/katalog/revision/list?format=atom&#038;#39" rel="nofollow">https://www.data.gv.at/katalog/revision/list?format=atom&#038;#39</a>;</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L5" class="blob-num js-line-number js-blob-rnum" data-line-number="5"></td>
+          <td id="file-ckan_revision_reader-py-LC5" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L6" class="blob-num js-line-number js-blob-rnum" data-line-number="6"></td>
+          <td id="file-ckan_revision_reader-py-LC6" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L7" class="blob-num js-line-number js-blob-rnum" data-line-number="7"></td>
+          <td id="file-ckan_revision_reader-py-LC7" class="blob-code blob-code-inner js-file-line">def parse_feed(feed_url, days=30):</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L8" class="blob-num js-line-number js-blob-rnum" data-line-number="8"></td>
+          <td id="file-ckan_revision_reader-py-LC8" class="blob-code blob-code-inner js-file-line">    start_date = datetime.datetime.now() - datetime.timedelta(days=days)</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L9" class="blob-num js-line-number js-blob-rnum" data-line-number="9"></td>
+          <td id="file-ckan_revision_reader-py-LC9" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L10" class="blob-num js-line-number js-blob-rnum" data-line-number="10"></td>
+          <td id="file-ckan_revision_reader-py-LC10" class="blob-code blob-code-inner js-file-line">    d = feedparser.parse(feed_url)</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L11" class="blob-num js-line-number js-blob-rnum" data-line-number="11"></td>
+          <td id="file-ckan_revision_reader-py-LC11" class="blob-code blob-code-inner js-file-line">    total_ids = set()</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L12" class="blob-num js-line-number js-blob-rnum" data-line-number="12"></td>
+          <td id="file-ckan_revision_reader-py-LC12" class="blob-code blob-code-inner js-file-line">    created_ids = set()</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L13" class="blob-num js-line-number js-blob-rnum" data-line-number="13"></td>
+          <td id="file-ckan_revision_reader-py-LC13" class="blob-code blob-code-inner js-file-line">    updated_ids = set()</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L14" class="blob-num js-line-number js-blob-rnum" data-line-number="14"></td>
+          <td id="file-ckan_revision_reader-py-LC14" class="blob-code blob-code-inner js-file-line">    for post in d.entries:</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L15" class="blob-num js-line-number js-blob-rnum" data-line-number="15"></td>
+          <td id="file-ckan_revision_reader-py-LC15" class="blob-code blob-code-inner js-file-line">        date = datetime.datetime(*(post.updated_parsed[0:6]))</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L16" class="blob-num js-line-number js-blob-rnum" data-line-number="16"></td>
+          <td id="file-ckan_revision_reader-py-LC16" class="blob-code blob-code-inner js-file-line">        if date &gt;= start_date:</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L17" class="blob-num js-line-number js-blob-rnum" data-line-number="17"></td>
+          <td id="file-ckan_revision_reader-py-LC17" class="blob-code blob-code-inner js-file-line">            t = post.title</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L18" class="blob-num js-line-number js-blob-rnum" data-line-number="18"></td>
+          <td id="file-ckan_revision_reader-py-LC18" class="blob-code blob-code-inner js-file-line">            s = find_between(t, &#39;[&#39;, &#39;]&#39;)</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L19" class="blob-num js-line-number js-blob-rnum" data-line-number="19"></td>
+          <td id="file-ckan_revision_reader-py-LC19" class="blob-code blob-code-inner js-file-line">            details = s.split(&#39;:&#39;)</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L20" class="blob-num js-line-number js-blob-rnum" data-line-number="20"></td>
+          <td id="file-ckan_revision_reader-py-LC20" class="blob-code blob-code-inner js-file-line">            if len(details) &gt; 0:</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L21" class="blob-num js-line-number js-blob-rnum" data-line-number="21"></td>
+          <td id="file-ckan_revision_reader-py-LC21" class="blob-code blob-code-inner js-file-line">                id = details[0]</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L22" class="blob-num js-line-number js-blob-rnum" data-line-number="22"></td>
+          <td id="file-ckan_revision_reader-py-LC22" class="blob-code blob-code-inner js-file-line">                total_ids.add(id)</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L23" class="blob-num js-line-number js-blob-rnum" data-line-number="23"></td>
+          <td id="file-ckan_revision_reader-py-LC23" class="blob-code blob-code-inner js-file-line">            if len(details) &gt; 1:</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L24" class="blob-num js-line-number js-blob-rnum" data-line-number="24"></td>
+          <td id="file-ckan_revision_reader-py-LC24" class="blob-code blob-code-inner js-file-line">                typ = details[1]</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L25" class="blob-num js-line-number js-blob-rnum" data-line-number="25"></td>
+          <td id="file-ckan_revision_reader-py-LC25" class="blob-code blob-code-inner js-file-line">                if typ == &#39;created&#39;:</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L26" class="blob-num js-line-number js-blob-rnum" data-line-number="26"></td>
+          <td id="file-ckan_revision_reader-py-LC26" class="blob-code blob-code-inner js-file-line">                    created_ids.add(id)</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L27" class="blob-num js-line-number js-blob-rnum" data-line-number="27"></td>
+          <td id="file-ckan_revision_reader-py-LC27" class="blob-code blob-code-inner js-file-line">                elif typ == &#39;updated&#39;:</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L28" class="blob-num js-line-number js-blob-rnum" data-line-number="28"></td>
+          <td id="file-ckan_revision_reader-py-LC28" class="blob-code blob-code-inner js-file-line">                    updated_ids.add(id)</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L29" class="blob-num js-line-number js-blob-rnum" data-line-number="29"></td>
+          <td id="file-ckan_revision_reader-py-LC29" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L30" class="blob-num js-line-number js-blob-rnum" data-line-number="30"></td>
+          <td id="file-ckan_revision_reader-py-LC30" class="blob-code blob-code-inner js-file-line">    print &#39;total number of edited datasets:&#39;, len(total_ids)</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L31" class="blob-num js-line-number js-blob-rnum" data-line-number="31"></td>
+          <td id="file-ckan_revision_reader-py-LC31" class="blob-code blob-code-inner js-file-line">    print &#39;number of created datasets:&#39;, len(created_ids)</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L32" class="blob-num js-line-number js-blob-rnum" data-line-number="32"></td>
+          <td id="file-ckan_revision_reader-py-LC32" class="blob-code blob-code-inner js-file-line">    print &#39;number of updated datasets:&#39;, len(updated_ids)</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L33" class="blob-num js-line-number js-blob-rnum" data-line-number="33"></td>
+          <td id="file-ckan_revision_reader-py-LC33" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L34" class="blob-num js-line-number js-blob-rnum" data-line-number="34"></td>
+          <td id="file-ckan_revision_reader-py-LC34" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L35" class="blob-num js-line-number js-blob-rnum" data-line-number="35"></td>
+          <td id="file-ckan_revision_reader-py-LC35" class="blob-code blob-code-inner js-file-line">def find_between(s, first, last):</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L36" class="blob-num js-line-number js-blob-rnum" data-line-number="36"></td>
+          <td id="file-ckan_revision_reader-py-LC36" class="blob-code blob-code-inner js-file-line">    try:</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L37" class="blob-num js-line-number js-blob-rnum" data-line-number="37"></td>
+          <td id="file-ckan_revision_reader-py-LC37" class="blob-code blob-code-inner js-file-line">        start = s.index(first) + len(first)</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L38" class="blob-num js-line-number js-blob-rnum" data-line-number="38"></td>
+          <td id="file-ckan_revision_reader-py-LC38" class="blob-code blob-code-inner js-file-line">        end = s.index(last, start)</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L39" class="blob-num js-line-number js-blob-rnum" data-line-number="39"></td>
+          <td id="file-ckan_revision_reader-py-LC39" class="blob-code blob-code-inner js-file-line">        return s[start:end]</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L40" class="blob-num js-line-number js-blob-rnum" data-line-number="40"></td>
+          <td id="file-ckan_revision_reader-py-LC40" class="blob-code blob-code-inner js-file-line">    except ValueError:</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L41" class="blob-num js-line-number js-blob-rnum" data-line-number="41"></td>
+          <td id="file-ckan_revision_reader-py-LC41" class="blob-code blob-code-inner js-file-line">        return &quot;&quot;</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L42" class="blob-num js-line-number js-blob-rnum" data-line-number="42"></td>
+          <td id="file-ckan_revision_reader-py-LC42" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L43" class="blob-num js-line-number js-blob-rnum" data-line-number="43"></td>
+          <td id="file-ckan_revision_reader-py-LC43" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L44" class="blob-num js-line-number js-blob-rnum" data-line-number="44"></td>
+          <td id="file-ckan_revision_reader-py-LC44" class="blob-code blob-code-inner js-file-line">if __name__ == &#39;__main__&#39;:</td>
+        </tr>
+        <tr>
+          <td id="file-ckan_revision_reader-py-L45" class="blob-num js-line-number js-blob-rnum" data-line-number="45"></td>
+          <td id="file-ckan_revision_reader-py-LC45" class="blob-code blob-code-inner js-file-line">    parse_feed(FEED)</td>
+        </tr>
+  </table>
+</div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/sebneu/3196eedbf01c5776e5d8/raw/c3b801e5eeef6cdb46c5d27fc80c6e7a0c4193f9/ckan_revision_reader.py" style="float:right" class="Link--inTextBlock">view raw</a>
+        <a href="https://gist.github.com/sebneu/3196eedbf01c5776e5d8#file-ckan_revision_reader-py" class="Link--inTextBlock">
+          ckan_revision_reader.py
+        </a>
+        hosted with &#10084; by <a class="Link--inTextBlock" href="https://github.com">GitHub</a>
+      </div>
+    </div>
+</div>
+</p>
+
+</div></body></html>

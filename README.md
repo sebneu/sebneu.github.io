@@ -11,6 +11,9 @@ A minimal **static** site (plain HTML + one stylesheet, no build step, no Jekyll
 | `index.html` | About, news, research, selected publications, projects, teaching, service |
 | `publications.html` | Full publication list with per-entry *Cite* (Copy BibTeX) buttons |
 | `publications.bib` | All publications as BibTeX — the single source of truth for citations |
+| `documents.html` | Browsable overview of archived talk slides, posters and paper PDFs |
+| `files/` | Uploaded documents migrated from WordPress, mirroring `wp-content/uploads/YYYY/MM/` |
+| `archive/` | Raw archive of the old WordPress posts/pages (JSON + readable HTML), not linked from the site |
 | `style.css` | Shared stylesheet (light + dark theme via `prefers-color-scheme`) |
 | `favicon.svg` | Site icon |
 

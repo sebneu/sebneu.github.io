@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using Dgraph to store DCAT datasets — archived</title>
+<link rel="stylesheet" href="../../style.css">
+</head><body><div class="wrap">
+<p class="meta">Archived from sebneumaier.wordpress.com · post · 2020-07-27 · original: <a href="https://sebneumaier.wordpress.com/2020/07/27/using-dgraph-to-store-dcat-datasets/">https://sebneumaier.wordpress.com/2020/07/27/using-dgraph-to-store-dcat-datasets/</a></p>
+<h1>Using Dgraph to store DCAT datasets</h1>
+
+<p class="wp-block-paragraph"></p>
+
+
+
+<p class="has-text-align-justify has-medium-font-size wp-block-paragraph"><strong>DCAT</strong></p>
+
+
+
+<p class="wp-block-paragraph">The <a href="https://www.w3.org/TR/vocab-dcat-2/">Data Catalog Vocabulary (DCAT)</a> is an RDF vocabulary to describe datasets, data services and available resources in catalogs and portals. DCAT is a W3C Recommendation and an updated version (2) has been published in February 2020. </p>
+
+
+
+<p class="wp-block-paragraph">DCAT defines a set of classes and properties, and incorporates properties from existing vocabularies such as the <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">Dublin Core vocabulary</a> and <a href="http://xmlns.com/foaf/spec/">FOAF</a>. The figure below (taken from the <a href="https://www.w3.org/TR/vocab-dcat-2/">W3C Recommendation</a>) gives an overview of all the classes, properties and relations of the DCAT model:</p>
+
+
+
+<figure class="wp-block-embed is-type-rich"><div class="wp-block-embed__wrapper">
+<a href="https://www.w3.org/TR/vocab-dcat-2/images/DCAT-summary-all-attributes.png"><img src="https://www.w3.org/TR/vocab-dcat-2/images/DCAT-summary-all-attributes.png" style="max-width:100%;" /></a>
+</div></figure>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph"><strong>Dgraph Types</strong></p>
+
+
+
+<p class="wp-block-paragraph">Dgraph supports a type system that I want to use to encode the different DCAT classes and properties. To do so have to look into Dgraph&#8217;s different schema types:</p>
+
+
+
+<ul class="wp-block-list"><li>Dgraph supports a set of <a href="https://dgraph.io/docs/query-language/#schema-types">scalar types</a>, e.g. string, int, float, bool, dateTime</li><li>To further categorize nodes we can define own types; we will use this to define the types Dataset and Distribution.</li><li>There is no inheritance, no support of sub-properties and sub-types. This means we cannot define an abstract &#8220;dcat:Resouce&#8221; type as it is present in the DCAT model.</li><li>We cannot set the range of a property: In Dgraph we can use the <code>uid</code> type to denote a node-node edge, however, we cannot set the type of the target node. </li></ul>
+
+
+
+<p class="wp-block-paragraph">Dgraph does not support namespaces. We encode this information by using the namespace as a prefix (separated by a period). The types in Dgraph are defined using a GraphQL-like syntax. Below you can see the type definitions for Dataset and Distribution; the full model can be found <a href="https://gist.github.com/sebneu/fca132037784bd51f034e19e2a30b364">here</a>.</p>
+
+
+
+<pre class="wp-block-code"><code>type dcat.Dataset {
+    dcat.distribution
+    dcat.spatialResolutionInMeters
+    dcat.temporalResolution
+    dct.accrualPeriodicity
+    dct.spatial
+    dct.temporal
+    prov.wasGeneratedBy
+    # dcat:Resource
+    dcat.contactPoint
+    dcat.keyword
+    dcat.landingPage
+    dcat.qualifiedRelation
+    dcat.theme
+    dct.accessRights
+    dct.conformsTo
+    dct.creator
+    dct.description
+    dct.identifier
+    dct.isReferencedBy
+    dct.issued
+    dct.language
+    dct.modified
+    dct.publisher
+    dct.relation
+    dct.rights
+    dct.title
+    dct.type
+    odrl.hasPolicy
+    prov.qualifiedAttribution
+}
+
+type dcat.Distribution {
+    dcat.accessService
+    dcat.accessURL
+    dcat.byteSize
+    dcat.compressFormat
+    dcat.downloadURL
+    dcat.mediaType
+    dcat.packageFormat
+    dcat.spatialResolutionInMeters
+    dcat.temporalResolution
+    dct.accessRights
+    dct.conformsTo
+    dct.description
+    dct.format
+    dct.issued
+    dct.license
+    dct.modified
+    dct.rights
+    dct.title
+    odrl.hasPolicy
+}
+
+dcat.accessService: &#091;uid] . # dcat:DataService
+dcat.accessURL: string . # rdfs:Resource
+dcat.byteSize: float .
+dcat.compressFormat: string . # dct:MediaType
+dcat.downloadURL: string . # rdfs:Resource
+dcat.mediaType: string . # dct:MediaType
+dcat.packageFormat: string . # dct:MediaType
+dcat.distribution: &#091;uid] . # dcat:Distribution
+dct.accessRights: string . # dct:RightsStatement
+dct.conformsTo: string . # dct:Standard
+dcat.contactPoint: &#091;uid] . # vcard:Kind
+dct.creator: string . # foaf:Agent
+dct.description: string @lang .
+dct.title: string @lang .
+dct.issued: dateTime .
+dct.modified: dateTime .
+dct.language: string . # dct:LinguisticSystem
+dct.publisher: &#091;uid] .
+dct.identifier: string .
+dcat.theme: string . # skos:Concept
+dct.type: string . # rdfs:Class
+dct.relation: string .
+dcat.qualifiedRelation: string . # dcat:Relationship
+dcat.keyword: string @lang .
+dcat.landingPage: string . # foaf:Document
+prov.qualifiedAttribution: string . # prov:Attribution
+dct.license: string . # dct:LicenseDocument
+dct.rights: string . # dct:RightsStatement
+odrl.hasPolicy: string . # odrl:Policy
+dct.isReferencedBy: string .
+foaf.primaryTopic: string .
+dct.accrualPeriodicity: string . # dct:Frequency
+dct.spatial: string . # dct:Location
+dcat.spatialResolutionInMeters: float .
+dct.temporal: &#091;uid] . # dct:PeriodOfTime
+dcat.temporalResolution: string . # xsd:duration
+prov.wasGeneratedBy: string . # prov:Activity
+dct.format: string . # dct:MediaTypeOrExtent</code></pre>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph"><strong>Insert a DCAT Dataset</strong></p>
+
+
+
+<p class="wp-block-paragraph">Let&#8217;s look at an <a href="https://www.europeandataportal.eu/data/datasets/13347329-bundesamt-fur-statistik-bfs?locale=en">example dataset</a> from the European Data Portal using the DCAT vocabulary. The metadata for this dataset is available <a href="https://www.europeandataportal.eu/data/api/datasets/13347329-bundesamt-fur-statistik-bfs.nt?useNormalizedId=true&amp;locale=en">as RDF N-Triples</a>:</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;https://europeandataportal.eu/set/data/13347329-bundesamt-fur-statistik-bfs&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.w3.org/ns/dcat#Dataset&gt; .
+&lt;https://europeandataportal.eu/set/data/13347329-bundesamt-fur-statistik-bfs&gt; &lt;http://purl.org/dc/terms/title&gt; "Divorces by institutional units, duration of marriage and nationality (category) of both of the divorcing partners at divorce"@en .
+&lt;https://europeandataportal.eu/set/data/13347329-bundesamt-fur-statistik-bfs&gt; &lt;http://www.w3.org/ns/dcat#contactPoint&gt; _:B0d9012c27d93aa9441eea1564897b62a .
+&lt;https://europeandataportal.eu/set/data/13347329-bundesamt-fur-statistik-bfs&gt; &lt;http://www.w3.org/ns/dcat#keyword&gt; "bevolkerung"@de .
+&lt;https://europeandataportal.eu/set/data/13347329-bundesamt-fur-statistik-bfs&gt; &lt;http://www.w3.org/ns/dcat#keyword&gt; "tabella"@it .
+&lt;https://europeandataportal.eu/set/data/13347329-bundesamt-fur-statistik-bfs&gt; &lt;http://www.w3.org/ns/dcat#distribution&gt; &lt;https://europeandataportal.eu/set/distribution/8273cee0-6700-443a-b201-bcb537ce70b1&gt; .
+&lt;https://europeandataportal.eu/set/data/13347329-bundesamt-fur-statistik-bfs&gt; &lt;http://purl.org/dc/terms/issued&gt; "2020-06-25T02:00:00"^^&lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; .
+&lt;https://europeandataportal.eu/set/distribution/8273cee0-6700-443a-b201-bcb537ce70b1&gt; &lt;http://www.w3.org/ns/dcat#accessURL&gt; &lt;https://www.bfs.admin.ch/asset/fr/px-x-0102020203_103&gt; .
+&lt;https://europeandataportal.eu/set/distribution/8273cee0-6700-443a-b201-bcb537ce70b1&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.w3.org/ns/dcat#Distribution&gt; .
+&lt;https://europeandataportal.eu/set/distribution/8273cee0-6700-443a-b201-bcb537ce70b1&gt; &lt;http://purl.org/dc/terms/title&gt; ""@de .
+&lt;https://europeandataportal.eu/set/distribution/8273cee0-6700-443a-b201-bcb537ce70b1&gt; &lt;http://purl.org/dc/terms/title&gt; ""@en .
+&lt;https://europeandataportal.eu/set/distribution/8273cee0-6700-443a-b201-bcb537ce70b1&gt; &lt;http://www.w3.org/ns/dcat#mediaType&gt; "text/html" .</code></pre>
+
+
+
+<p class="wp-block-paragraph">Dgraph does not directly support to load any RDF into the database. It creates a UID for each blank node used in the input. Also, it does not allow external IDs as node identifiers. The <a href="https://dgraph.io/docs/mutations/">Dgraph documentation</a> recommends to add an additional <code>xid</code> edge and store the external IDs and types as strings:</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;0x321&gt; &lt;xid&gt; "https://europeandataportal.eu/set/data/13347329-bundesamt-fur-statistik-bfs" .
+&lt;0x321&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;0x123&gt; .
+&lt;0x321&gt; &lt;dgraph.type&gt; "Dataset" .</code></pre>
+
+
+
+<p class="wp-block-paragraph">I also encoded the external IDs in the prefixes of the types and the properties, as you can see in the above schema. To insert the above RDF example, I have to simplify the input a bit:</p>
+
+
+
+<ul class="wp-block-list"><li>Replacing all (external) subjects with newly introduced blank nodes</li><li>Adding a <code>source</code> edge to store these external links</li><li>Converting all remaining RDF object resources (&lt;<a href="http://">http://</a>..&gt;) to strings (&#8220;<a href="http://">http://</a>..&#8221;)</li></ul>
+
+
+
+<p class="wp-block-paragraph">To insert triples in Dgraph we have to use the <code>set</code> keyword:</p>
+
+
+
+<pre class="wp-block-code"><code>curl -H "Content-Type: application/rdf" -X POST localhost:8080/mutate?commitNow=true -d $'
+{
+  set {
+_:dataset &lt;source&gt; "https://europeandataportal.eu/set/data/13347329-bundesamt-fur-statistik-bfs" .
+_:dataset &lt;dgraph.type&gt; "dcat.Dataset" .
+_:dataset &lt;dct.spatial&gt; "Kantone" .
+_:dataset &lt;dct.temporal&gt; _:B89a1f708d00f5dad999618a00f47c9c3 .
+_:dataset &lt;dcat.keyword&gt; "bevolkerung"@de .
+_:dataset &lt;dcat.keyword&gt; "tabella"@it .
+_:dataset &lt;dcat.distribution&gt; _:8273cee06700443ab201bcb537ce70b1 .
+_:8273cee06700443ab201bcb537ce70b1 &lt;dgraph.type&gt; "dcat.Distribution" .
+_:8273cee06700443ab201bcb537ce70b1 &lt;dcat.accessURL&gt; "https://www.bfs.admin.ch/asset/fr/px-x-0102020203_103" .
+_:8273cee06700443ab201bcb537ce70b1 &lt;dct.rights&gt; "NonCommercialAllowed-CommercialWithPermission-ReferenceRequired" .
+_:8273cee06700443ab201bcb537ce70b1 &lt;dct.issued&gt; "2020-06-25T02:00:00"^^&lt;xs:dateTime&gt; .
+_:8273cee06700443ab201bcb537ce70b1 &lt;dcat.mediaType&gt; "text/html" .
+ }
+}</code></pre>
+
+
+
+<p class="wp-block-paragraph"></p>
+
+</div></body></html>
